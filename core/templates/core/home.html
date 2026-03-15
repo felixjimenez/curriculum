@@ -90,10 +90,10 @@
             <p class="lead text-white opacity-75">Rut: 27.983.512-3</p>
             
             <div class="d-flex justify-content-center gap-3 mt-3">
-                <a href="#" class="text-white fs-4"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="text-white fs-4"><i class="fab fa-facebook"></i></a>
-                <a href="#" class="text-white fs-4"><i class="fab fa-linkedin"></i></a>
-                <a href="#" class="text-white fs-4"><i class="fab fa-instagram"></i></a>
+                <a href="https://twitter.com/felixjimenez09" class="text-white fs-4"><i class="fab fa-twitter"></i></a>
+                <a href="https://web.facebook.com/fvjpsg?_rdc=1&_rdr" class="text-white fs-4"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.linkedin.com/in/felix-valois-jimenez-parada-1a52aa28/" class="text-white fs-4"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.instagram.com/felixjimenez1/" class="text-white fs-4"><i class="fab fa-instagram"></i></a>
             </div>
         </div>
     </header>
@@ -120,6 +120,8 @@
                             {% if edu.logo %}
                                 <img src="{{ edu.logo_thumbnail.url }}" alt="{{ edu.institucion }}" title="{{ edu.titulo }}">
                             {% endif %}
+                            <h5 class="card-title fw-bold">{{ edu.titulo }}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">{{ edu.fecha_graduacion }}</h6>
                             <small class="d-block mt-1 text-muted">{{ edu.institucion }}</small>
                         </div>
                         {% endfor %}
