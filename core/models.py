@@ -1,35 +1,26 @@
 # core/models.py
 from django.db import models
-from imagekit.models import ImageSpecField
-from imagekit.processors import ResizeToFit
 
 # Modelo para Experiencia Laboral
 class Experiencia(models.Model):
     cargo = models.CharField(
-        max_length=200, 
+        max_length=200,
         verbose_name="Cargo / Título",
         help_text="Ej: Ingeniero de Software Senior"
     )
     empresa = models.CharField(
-        max_length=200, 
+        max_length=200,
         verbose_name="Nombre de la Empresa"
     )
     sitio_web = models.URLField(
-        blank=True, 
-        null=True, 
+        blank=True,
+        null=True,
         verbose_name="Sitio Web de la Empresa"
     )
     logo = models.ImageField(
-        upload_to='logos_empresas/', 
+        upload_to='logos_empresas/',
         verbose_name="Logo de la Empresa",
         help_text="Suba una imagen del logo (PNG/JPG)"
-    )
-    # Generamos automáticamente una miniatura optimizada para la web
-    logo_thumbnail = ImageSpecField(
-        source='logo',
-        processors='',
-        format='PNG',
-        options={'quality': 90}
     )
     
     fecha_inicio = models.DateField(verbose_name="Fecha de Inicio")
@@ -67,12 +58,6 @@ class Educacion(models.Model):
     institucion = models.CharField(max_length=200, verbose_name="Institución")
     titulo = models.CharField(max_length=200, verbose_name="Título Obtenido")
     logo = models.ImageField(upload_to='logos_educacion/')
-    logo_thumbnail = ImageSpecField(
-        source='logo',
-        processors='',
-        format='PNG',
-        options={'quality': 90}
-    )
     fecha_graduacion = models.DateField(verbose_name="Fecha de Graduación")
     
     class Meta:

@@ -119,12 +119,12 @@
                         {% for edu in educacion %}
                         <div class="col-12 mb-3 logo-container">
                             {% if edu.logo %}
-                                <img src="{{ edu.logo_thumbnail.url }}" alt="{{ edu.institucion }}" title="{{ edu.titulo }}">
+                                <img src="{{ edu.logo.url }}" alt="{{ edu.institucion }}" title="{{ edu.titulo }}">
                             {% endif %}
                             <h5 class="card-title fw-bold">{{ edu.titulo }}</h5>
                             <h6 class="card-subtitle mb-2 text-muted">{{ edu.fecha_graduacion }}</h6>
                             <small class="d-block mt-1 text-muted">{{ edu.institucion }}</small>
-                            <h2>-------------------</h2>
+                            <hr style="border: none; border-top: 1px solid #e0d5c5; margin: 0.75rem auto; width: 60%;">
 
                         </div>
                         {% endfor %}
@@ -142,7 +142,7 @@
                             <div class="card-body text-center">
                                 {% if exp.logo %}
                                     <div class="logo-container mb-3" style="height: 80px; display: flex; align-items: center; justify-content: center;">
-                                        <img src="{{ exp.logo_thumbnail.url }}" alt="{{ exp.empresa }}">
+                                        <img src="{{ exp.logo.url }}" alt="{{ exp.empresa }}">
                                     </div>
                                 {% endif %}
                                 <h5 class="card-title fw-bold">{{ exp.cargo }}</h5>
@@ -171,7 +171,7 @@
                             <div class="card-body text-center">
                                 {% if exp.logo %}
                                     <div class="logo-container mb-3" style="height: 80px; display: flex; align-items: center; justify-content: center;">
-                                        <img src="{{ exp.logo_thumbnail.url }}" alt="{{ exp.empresa }}">
+                                        <img src="{{ exp.logo.url }}" alt="{{ exp.empresa }}">
                                     </div>
                                 {% endif %}
                                 <h5 class="card-title fw-bold">{{ exp.cargo }}</h5>

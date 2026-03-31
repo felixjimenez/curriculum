@@ -1,11 +1,10 @@
 asgiref==3.11.1
+cloudinary==1.42.1
 dj-database-url==2.3.0
 Django==5.2.11
-django-appconf==1.2.0
-django-imagekit==6.0.0
+django-cloudinary-storage==0.3.0
 gunicorn==25.1.0
 packaging==26.0
-pilkit==3.0
 pillow==12.1.0
 psycopg2-binary==2.9.10
 sqlparse==0.5.5
