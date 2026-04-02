@@ -142,18 +142,21 @@
                             <div class="card-body text-center">
                                 {% if exp.logo %}
                                     <div class="logo-container mb-3" style="height: 80px; display: flex; align-items: center; justify-content: center;">
-                                        <img src="{{ exp.logo.url }}" alt="{{ exp.empresa }}">
+                                        {% if exp.sitio_web %}
+                                            <a href="{{ exp.sitio_web }}" target="_blank">
+                                                <img src="{{ exp.logo.url }}" alt="{{ exp.empresa }}">
+                                            </a>
+                                        {% else %}
+                                            <img src="{{ exp.logo.url }}" alt="{{ exp.empresa }}">
+                                        {% endif %}
                                     </div>
                                 {% endif %}
                                 <h5 class="card-title fw-bold">{{ exp.cargo }}</h5>
                                 <h6 class="card-subtitle mb-2 text-muted">{{ exp.empresa }}</h6>
                                 <p class="card-text small">{{ exp.descripcion|truncatewords:20 }}</p>
-                                {% if exp.sitio_web %}
-                                    <a href="{{ exp.sitio_web }}" target="_blank" class="btn btn-sm btn-outline-warning">Visitar Sitio</a>
-                                {% endif %}
                             </div>
                             <div class="card-footer bg-transparent border-0 text-muted small text-center">
-                                {{ exp.fecha_inicio|date:"Y" }} - 
+                                {{ exp.fecha_inicio|date:"Y" }} -
                                 {% if exp.es_trabajo_actual %}Presente{% else %}{{ exp.fecha_fin|date:"Y" }}{% endif %}
                             </div>
                         </div>
@@ -171,18 +174,21 @@
                             <div class="card-body text-center">
                                 {% if exp.logo %}
                                     <div class="logo-container mb-3" style="height: 80px; display: flex; align-items: center; justify-content: center;">
-                                        <img src="{{ exp.logo.url }}" alt="{{ exp.empresa }}">
+                                        {% if exp.sitio_web %}
+                                            <a href="{{ exp.sitio_web }}" target="_blank">
+                                                <img src="{{ exp.logo.url }}" alt="{{ exp.empresa }}">
+                                            </a>
+                                        {% else %}
+                                            <img src="{{ exp.logo.url }}" alt="{{ exp.empresa }}">
+                                        {% endif %}
                                     </div>
                                 {% endif %}
                                 <h5 class="card-title fw-bold">{{ exp.cargo }}</h5>
                                 <h6 class="card-subtitle mb-2 text-muted">{{ exp.empresa }}</h6>
                                 <p class="card-text small">{{ exp.descripcion|truncatewords:40 }}</p>
-                                {% if exp.sitio_web %}
-                                    <a href="{{ exp.sitio_web }}" target="_blank" class="btn btn-sm btn-outline-warning">Visitar Sitio</a>
-                                {% endif %}
                             </div>
                             <div class="card-footer bg-transparent border-0 text-muted small text-center">
-                                {{ exp.fecha_inicio|date:"Y" }} - 
+                                {{ exp.fecha_inicio|date:"Y" }} -
                                 {% if exp.es_trabajo_actual %}Presente{% else %}{{ exp.fecha_fin|date:"Y" }}{% endif %}
                             </div>
                         </div>
