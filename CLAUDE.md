@@ -36,9 +36,8 @@ Standard Django project with a single app (`core`) serving a one-page portfolio 
 **Project layout:** `curri/` is the Django project root (contains `manage.py`). Inside it, `curri/` is the settings package and `core/` is the sole app.
 
 **Data models** (`core/models.py`):
-- `Experiencia` — work experience entries with fields for title, company, logo, dates, country (`CL` or `VE`), and a current-job flag. Ordered by most recent first.
-- `Educacion` — education entries with institution, degree title, logo, and graduation date. Ordered by most recent first.
-- Both models use `django-imagekit` to auto-generate thumbnails from uploaded logos.
+- `Experiencia` — work experience entries with fields for title, company, logo (ImageField), dates, `pais` (`'CL'` or `'VE'`), and a current-job flag. Ordered by most recent first.
+- `Educacion` — education entries with institution, degree title, logo (ImageField), and graduation date. Ordered by most recent first.
 
 **Single view** (`core/views.py`): The `home()` view queries experiences filtered by country (Chile and Venezuela separately) plus all education records, and renders them to `core/templates/core/home.html`.
 
@@ -46,6 +45,10 @@ Standard Django project with a single app (`core`) serving a one-page portfolio 
 
 **Admin** (`core/admin.py`): `ExperienciaAdmin` (filterable by country and current status, searchable by title/company) and `EducacionAdmin` are registered for content management.
 
-**Media files** are stored under `media/` (company/institution logos uploaded via admin). Imagekit caches processed thumbnails in `media/CACHE/`.
+**Media storage:** In development (`DEBUG=True`), logos are served from `media/` locally. In production, `DEFAULT_FILE_STORAGE` switches to `cloudinary_storage.storage.MediaCloudinaryStorage` — requires `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, and `CLOUDINARY_API_SECRET` env vars.
 
-**Deployment:** Hosted on Render at `curriculum-66ml.onrender.com`. `DEBUG=True` is currently set in `settings.py` — change to `False` for production hardening.
+**Static files:** Served via WhiteNoise (`CompressedManifestStaticFilesStorage`). Run `collectstatic` before deploying.
+
+**Environment variables required:** `SECRET_KEY`, `DATABASE_URL` (defaults to SQLite), `DEBUG` (defaults to `False`), `CLOUDINARY_*` (production only).
+
+**Deployment:** Hosted on Render at `curriculum-66ml.onrender.com`. Uses `dj-database-url` to parse `DATABASE_URL`; SQLite locally, PostgreSQL in production.
