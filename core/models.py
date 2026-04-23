@@ -19,6 +19,8 @@ class Experiencia(models.Model):
     )
     logo = models.ImageField(
         upload_to='logos_empresas/',
+        blank=True,
+        null=True,
         verbose_name="Logo de la Empresa",
         help_text="Suba una imagen del logo (PNG/JPG)"
     )
@@ -57,7 +59,7 @@ class Experiencia(models.Model):
 class Educacion(models.Model):
     institucion = models.CharField(max_length=200, verbose_name="Institución")
     titulo = models.CharField(max_length=200, verbose_name="Título Obtenido")
-    logo = models.ImageField(upload_to='logos_educacion/')
+    logo = models.ImageField(upload_to='logos_educacion/', blank=True, null=True)
     fecha_graduacion = models.DateField(verbose_name="Fecha de Graduación")
     
     class Meta:
