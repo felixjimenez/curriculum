@@ -10,4 +10,5 @@ class ExperienciaAdmin(admin.ModelAdmin):
 
 @admin.register(Educacion)
 class EducacionAdmin(admin.ModelAdmin):
-    list_display = ('titulo', 'institucion', 'fecha_graduacion')
+    list_display = ('titulo', 'institucion', 'ano_ingreso', 'ano_egreso', 'sitio_web')
+    search_fields = ('titulo', 'institucion')

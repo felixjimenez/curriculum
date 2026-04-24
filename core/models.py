@@ -60,12 +60,26 @@ class Educacion(models.Model):
     institucion = models.CharField(max_length=200, verbose_name="Institución")
     titulo = models.CharField(max_length=200, verbose_name="Título Obtenido")
     logo = models.ImageField(upload_to='logos_educacion/', blank=True, null=True)
-    fecha_graduacion = models.DateField(verbose_name="Fecha de Graduación")
-    
+    sitio_web = models.URLField(
+        blank=True,
+        null=True,
+        verbose_name="Sitio Web de la Institución"
+    )
+    ano_ingreso = models.PositiveSmallIntegerField(
+        blank=True,
+        null=True,
+        verbose_name="Año de Ingreso"
+    )
+    ano_egreso = models.PositiveSmallIntegerField(
+        blank=True,
+        null=True,
+        verbose_name="Año de Egreso"
+    )
+
     class Meta:
         verbose_name = "Educación"
         verbose_name_plural = "Formación Académica"
-        ordering = ['-fecha_graduacion']
+        ordering = ['-ano_egreso']
 
     def __str__(self):
         return f"{self.titulo} - {self.institucion}"

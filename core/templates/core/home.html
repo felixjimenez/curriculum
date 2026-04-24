@@ -53,6 +53,11 @@
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
 
+       /* Borde destacado para cajas de Educación y Trabajos */
+       .card-highlight {
+            border-left: 4px solid #e67e22;
+        }
+
        .section-title {
             color: #e67e22;
             font-weight: 700;
@@ -109,8 +114,7 @@
                     <h3 class="h5 mb-3 fw-bold">Contacto</h3>
                     <div class="contact-info">
                         <p class="mb-2"><i class="fas fa-phone"></i> +56 942 027 642</p>
-                        <p class="mb-2"><i class="fas fa-phone-alt"></i> +56 962 323 052</p>
-                        <p class="mb-2"><i class="fas fa-map-marker-alt"></i> San Eugenio 567, Ñuñoa</p>
+                        <p class="mb-2"><i class="fas fa-map-marker-alt"></i> Ñuñoa - Región Metropolitana - Chile</p>
                         <p class="mb-2"><i class="fas fa-envelope"></i> fvjpsg@gmail.com</p>
                         <p class="mb-0"><i class="fas fa-globe"></i> <a href="https://ceramista.onrender.com" target="_blank">ceramista.onrender.com</a></p>
                     </div>
@@ -137,23 +141,31 @@
                     </div>
                 </div>
 
-                <div class="card card-custom p-4">
-                    <h3 class="h5 mb-3 fw-bold section-title"> A C A D E M I A </h3>
-                    <div class="row text-center">
-                        {% for edu in educacion %}
-                        <div class="col-12 mb-3 logo-container">
-                            {% if edu.logo %}
-                                <img src="{{ edu.logo.url }}" alt="{{ edu.institucion }}" title="{{ edu.titulo }}">
-                            {% endif %}
-                            <h5 class="card-title fw-bold">{{ edu.titulo }}</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">{{ edu.fecha_graduacion }}</h6>
-                            <small class="d-block mt-1 text-muted">{{ edu.institucion }}</small>
-                            <hr style="border: none; border-top: 1px solid #e0d5c5; margin: 0.75rem auto; width: 60%;">
-
-                        </div>
-                        {% endfor %}
+                <h3 class="h5 mb-3 fw-bold section-title"> A C A D E M I A </h3>
+                {% for edu in educacion %}
+                <div class="card card-custom card-highlight mb-3">
+                    <div class="card-body text-center">
+                        {% if edu.logo %}
+                            <div class="logo-container mb-3" style="height: 80px; display: flex; align-items: center; justify-content: center;">
+                                {% if edu.sitio_web %}
+                                    <a href="{{ edu.sitio_web }}" target="_blank">
+                                        <img src="{{ edu.logo.url }}" alt="{{ edu.institucion }}" title="{{ edu.titulo }}">
+                                    </a>
+                                {% else %}
+                                    <img src="{{ edu.logo.url }}" alt="{{ edu.institucion }}" title="{{ edu.titulo }}">
+                                {% endif %}
+                            </div>
+                        {% endif %}
+                        <h5 class="card-title fw-bold">{{ edu.titulo }}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{ edu.institucion }}</h6>
+                    </div>
+                    <div class="card-footer bg-transparent border-0 text-muted small text-center">
+                        {% if edu.ano_ingreso or edu.ano_egreso %}
+                            {{ edu.ano_ingreso|default:"?" }} &ndash; {{ edu.ano_egreso|default:"Presente" }}
+                        {% endif %}
                     </div>
                 </div>
+                {% endfor %}
             </div>
 
             <div class="col-lg-8">
@@ -162,7 +174,7 @@
                 <div class="row mb-4">
                     {% for exp in experiencias_cl %}
                     <div class="col-md-6">
-                        <div class="card card-custom h-100">
+                        <div class="card card-custom card-highlight h-100">
                             <div class="card-body text-center">
                                 {% if exp.logo %}
                                     <div class="logo-container mb-3" style="height: 80px; display: flex; align-items: center; justify-content: center;">
@@ -194,7 +206,7 @@
                 <div class="row">
                    {% for exp in experiencias_ve %}
                     <div class="col-md-6">
-                        <div class="card card-custom h-100">
+                        <div class="card card-custom card-highlight h-100">
                             <div class="card-body text-center">
                                 {% if exp.logo %}
                                     <div class="logo-container mb-3" style="height: 80px; display: flex; align-items: center; justify-content: center;">
