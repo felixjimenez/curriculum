@@ -7,6 +7,7 @@
     <title>Félix Valois Jiménez Parada - Portafolio</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/devicon.min.css">
     
     <style>
         /* CSS Personalizado para Modernización */
@@ -22,20 +23,21 @@
             color: var(--text-color);
         }
 
-        /* Header con estilo */
+        /* Header con estilo — fondo claro, sistema solar */
        .header-section {
-            background: linear-gradient(135deg, #3c3b39 0%, #2e1d0e 100%);
-            padding: 4rem 0;
+            background: linear-gradient(135deg, #fafbfc 0%, #eef1f5 100%);
+            padding: 3.5rem 0 3rem;
             margin-bottom: 3rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            overflow: hidden;
         }
 
        .profile-img {
             width: 180px;
             height: 180px;
             object-fit: cover;
-            border: 5px solid white;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            border: 4px solid #ffffff;
+            box-shadow: 0 0 0 6px #fff3e0, 0 10px 28px rgba(211, 84, 0, 0.18);
         }
 
         /* Tarjetas de Experiencia */
@@ -85,28 +87,259 @@
             width: 25px;
             color: #d35400;
         }
+
+        /* Subtítulo del header */
+       .role-subtitle {
+            color: #d35400;
+            letter-spacing: 0.5px;
+            font-weight: 500;
+        }
+
+        /* Sistema solar: foto al centro, logos orbitando */
+       .solar-system {
+            --radius: 220px;
+            position: relative;
+            width: calc(var(--radius) * 2 + 110px);
+            height: calc(var(--radius) * 2 + 110px);
+            margin: 0 auto 1.5rem;
+        }
+       .solar-system .profile-img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+        }
+       .orbit-icon {
+            --angle: 0deg;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 56px;
+            height: 56px;
+            margin: -28px 0 0 -28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            line-height: 1;
+            transform: rotate(var(--angle)) translateY(calc(var(--radius) * -1)) rotate(calc(var(--angle) * -1));
+            transition: transform 0.4s ease, filter 0.3s ease;
+            cursor: default;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+        }
+       .orbit-icon:hover {
+            transform: rotate(var(--angle)) translateY(calc(var(--radius) * -1)) rotate(calc(var(--angle) * -1)) scale(1.35);
+            filter: drop-shadow(0 4px 10px rgba(0,0,0,0.25));
+            z-index: 3;
+        }
+
+        /* En tablets/mobile: reducir el radio y los íconos */
+        @media (max-width: 700px) {
+           .solar-system {
+                --radius: 140px;
+            }
+           .solar-system .profile-img {
+                width: 110px;
+                height: 110px;
+                box-shadow: 0 0 0 4px #fff3e0, 0 6px 18px rgba(211, 84, 0, 0.18);
+            }
+           .orbit-icon {
+                width: 38px;
+                height: 38px;
+                margin: -19px 0 0 -19px;
+                font-size: 1.9rem;
+            }
+        }
+
+        /* Badges de sitios en producción */
+       .site-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.55rem 1rem;
+            background: #fff;
+            border: 1px solid #e5e1da;
+            border-radius: 999px;
+            color: #2d3436;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.25s ease;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+        }
+       .site-badge:hover {
+            background: #d35400;
+            color: white;
+            border-color: #d35400;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(211, 84, 0, 0.25);
+        }
+       .site-badge i {
+            color: #d35400;
+            transition: color 0.25s ease;
+        }
+       .site-badge:hover i {
+            color: white;
+        }
     </style>
 </head>
 <body>
 
     <header class="header-section text-center">
         <div class="container">
-            <img src="{% static 'images/foto_felix.jpg' %}" alt="Felix Jimenez" class="profile-img rounded-circle mb-3">
-            <h1 class="display-4 fw-bold text-white mb-0">Felix Valois Jimenez Parada</h1>
-            <p class="lead text-white opacity-75 mb-1">Rut: 27.983.512-3</p>
-            <p class="text-white opacity-75 mb-0">Ingeniero de Sistemas &middot; Desarrollo y administración de sistemas de información</p>
+
+            <!-- Sistema solar: foto al centro, 18 logos orbitando -->
+            <div class="solar-system">
+                <img src="{% static 'images/foto_felix.jpg' %}" alt="Felix Jimenez" class="profile-img rounded-circle">
+
+                <i class="devicon-python-plain colored orbit-icon" style="--angle: 0deg;" title="Python 3.13"></i>
+                <i class="devicon-django-plain colored orbit-icon" style="--angle: 20deg; color:#44B78B;" title="Django 5.2"></i>
+                <i class="devicon-flask-original orbit-icon" style="--angle: 40deg; color:#333;" title="Flask 3.x"></i>
+                <i class="devicon-debian-plain colored orbit-icon" style="--angle: 60deg;" title="Debian 13 (trixie)"></i>
+                <i class="devicon-linux-plain colored orbit-icon" style="--angle: 80deg; color:#333;" title="GNU/Linux"></i>
+                <i class="devicon-docker-plain colored orbit-icon" style="--angle: 100deg;" title="Docker"></i>
+                <i class="devicon-git-plain colored orbit-icon" style="--angle: 120deg;" title="Git / Gitea propio"></i>
+                <i class="devicon-opencv-plain colored orbit-icon" style="--angle: 140deg;" title="OpenCV — Haar Cascades + dlib"></i>
+                <i class="devicon-scikitlearn-plain colored orbit-icon" style="--angle: 160deg;" title="scikit-learn — DBSCAN"></i>
+                <i class="devicon-postgresql-plain colored orbit-icon" style="--angle: 180deg;" title="PostgreSQL"></i>
+                <i class="devicon-sqlite-plain colored orbit-icon" style="--angle: 200deg;" title="SQLite"></i>
+                <i class="devicon-bootstrap-plain colored orbit-icon" style="--angle: 220deg;" title="Bootstrap 5"></i>
+                <i class="devicon-bash-plain colored orbit-icon" style="--angle: 240deg; color:#4eaa25;" title="Bash / Shell scripting"></i>
+                <i class="devicon-vscode-plain colored orbit-icon" style="--angle: 260deg;" title="Visual Studio Code"></i>
+                <i class="fas fa-shield-alt orbit-icon" style="--angle: 280deg; color:#1f88c0;" title="Caddy — reverse proxy + HTTPS"></i>
+                <i class="fas fa-network-wired orbit-icon" style="--angle: 300deg; color:#2c3e50;" title="NSD — DNS autoritativo self-hosted"></i>
+                <i class="fas fa-book orbit-icon" style="--angle: 320deg; color:#526cfe;" title="MkDocs Material"></i>
+                <i class="fas fa-robot orbit-icon" style="--angle: 340deg; color:#d97757;" title="Claude Code"></i>
+            </div>
+
+            <h1 class="display-4 fw-bold mb-1" style="color:#2d3436;">Felix Valois Jimenez Parada</h1>
+            <p class="lead role-subtitle mb-2">Currículum · Portafolio · Logros recientes con IA</p>
+            <p class="small mb-0" style="color:#6c757d;">Rut: 27.983.512-3 &nbsp;·&nbsp; Ingeniero de Sistemas · Desarrollo y administración de sistemas de información</p>
 
             <div class="d-flex justify-content-center gap-3 mt-3">
-                <a href="https://github.com/felixjimenez" class="text-white fs-4" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://twitter.com/felixjimenez09" class="text-white fs-4" target="_blank"><i class="fab fa-twitter"></i></a>
-                <a href="https://web.facebook.com/fvjpsg?_rdc=1&_rdr" class="text-white fs-4" target="_blank"><i class="fab fa-facebook"></i></a>
-                <a href="https://www.linkedin.com/in/felix-valois-jimenez-parada-1a52aa28/" class="text-white fs-4" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="https://www.instagram.com/felixjimenez1/" class="text-white fs-4" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://github.com/felixjimenez" class="fs-4" target="_blank" style="color:#24292f;"><i class="fab fa-github"></i></a>
+                <a href="https://twitter.com/felixjimenez09" class="fs-4" target="_blank" style="color:#1da1f2;"><i class="fab fa-twitter"></i></a>
+                <a href="https://web.facebook.com/fvjpsg?_rdc=1&_rdr" class="fs-4" target="_blank" style="color:#1877f2;"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.linkedin.com/in/felix-valois-jimenez-parada-1a52aa28/" class="fs-4" target="_blank" style="color:#0a66c2;"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.instagram.com/felixjimenez1/" class="fs-4" target="_blank" style="color:#e4405f;"><i class="fab fa-instagram"></i></a>
             </div>
         </div>
     </header>
 
     <div class="container">
+
+        <!-- Logros recientes con Claude Code -->
+        <div class="card card-custom p-4 mb-5">
+            <h2 class="section-title">Logros recientes con Claude Code</h2>
+            <p class="text-muted mb-4">
+                Trabajos que he podido realizar en los últimos meses con la asistencia de <strong>Claude Code</strong> (IA aplicada al desarrollo de software y a la administración de sistemas). Entre paréntesis indico el perfil profesional que tradicionalmente desempeña cada una de estas labores.
+            </p>
+
+            <p class="mb-3"><em>Con la ayuda de Claude Code he podido…</em></p>
+
+            <ul class="list-unstyled">
+                <li class="mb-3">
+                    <i class="fas fa-server me-2" style="color:#d35400;"></i>
+                    <strong>Levantar un VPS propio en Hetzner (Debian 13) desde cero</strong>, instalar y configurar Docker, Caddy como reverse-proxy con HTTPS automático, organizar <code>/srv/felix</code> para múltiples servicios y dejar el servidor listo para producción.
+                    <em class="text-muted">(Administrador de Sistemas Linux / Ingeniero DevOps)</em>
+                </li>
+
+                <li class="mb-3">
+                    <i class="fas fa-network-wired me-2" style="color:#d35400;"></i>
+                    <strong>Migrar mi DNS a un esquema self-hosted con NSD como master y Buddyns como slave secundario</strong>, delegando los nameservers directamente desde NIC.cl y eliminando la dependencia de proveedores externos.
+                    <em class="text-muted">(Ingeniero de Redes / Administrador DNS)</em>
+                </li>
+
+                <li class="mb-3">
+                    <i class="fas fa-globe me-2" style="color:#d35400;"></i>
+                    <strong>Registrar y administrar mi dominio <code>felixjimenez.cl</code></strong> directamente en NIC.cl, configurar los subdominios productivos (<code>fotos.</code>, <code>manuales.</code>, <code>git.</code>) y mantener la zona DNS bajo mi control.
+                    <em class="text-muted">(Administrador de Infraestructura)</em>
+                </li>
+
+                <li class="mb-3">
+                    <i class="fab fa-python me-2" style="color:#d35400;"></i>
+                    <strong>Desplegar este sitio web personal en Django 5.2 en producción</strong>, con gestión de media y servicio bajo <code>felixjimenez.cl</code>.
+                    <em class="text-muted">(Desarrollador Backend Python / Django)</em>
+                </li>
+
+                <li class="mb-3">
+                    <i class="fas fa-flask me-2" style="color:#d35400;"></i>
+                    <strong>Poner en producción una aplicación Flask para Adderly Construcciones</strong>, con base de datos real, integración con Cloudinary para imágenes y panel de administración protegido.
+                    <em class="text-muted">(Desarrollador Full-Stack Python)</em>
+                </li>
+
+                <li class="mb-3">
+                    <i class="fas fa-brain me-2" style="color:#d35400;"></i>
+                    <strong>Construir un pipeline completo de Visión por Computadora aplicado a fotografía personal</strong> (~3.400 fotos): detección de rostros con OpenCV Haar Cascades, extracción y normalización de caras con dlib (<code>face_recognition</code>), agrupación por similitud con DBSCAN y Chinese Whispers, generación de mosaicos preview y renombrado automático por persona y fecha.
+                    <em class="text-muted">(Ingeniero de Visión por Computadora / Data Scientist en IA aplicada)</em>
+                </li>
+
+                <li class="mb-3">
+                    <i class="fas fa-images me-2" style="color:#d35400;"></i>
+                    <strong>Desarrollar y desplegar una galería web privada</strong> (<code>fotos.felixjimenez.cl</code>) con autenticación de administrador, vista pública sin login y herramientas masivas para clasificar personas en categorías (familia, amigos, conocidos…).
+                    <em class="text-muted">(Desarrollador Full-Stack)</em>
+                </li>
+
+                <li class="mb-3">
+                    <i class="fab fa-git-alt me-2" style="color:#d35400;"></i>
+                    <strong>Instalar y administrar mi propio Gitea</strong> (<code>git.felixjimenez.cl</code>) como reemplazo de GitHub para repositorios privados, sincronizando dos equipos físicos contra un único origen.
+                    <em class="text-muted">(Ingeniero DevOps / SRE)</em>
+                </li>
+
+                <li class="mb-3">
+                    <i class="fas fa-book me-2" style="color:#d35400;"></i>
+                    <strong>Publicar un sitio de documentación técnica</strong> (<code>manuales.felixjimenez.cl</code>) con MkDocs Material — 13 capítulos sobre Visión por Computadora, bitácora de aprendizaje y manuales en PDF — protegido con autenticación básica de Caddy.
+                    <em class="text-muted">(Technical Writer / Documentation Engineer)</em>
+                </li>
+
+                <li class="mb-3">
+                    <i class="fab fa-linux me-2" style="color:#d35400;"></i>
+                    <strong>Migrar mi PC principal de Debian 12 a Debian 13 (trixie)</strong> sobre disco NVMe, manteniendo Debian 12 en el disco SATA como red de seguridad, y resolver las trampas propias de Python 3.13 (PEP 668, <code>python3.13-venv</code>, <code>setuptools&lt;81</code>, <code>face_recognition_models</code> desde git).
+                    <em class="text-muted">(Administrador de Sistemas Linux)</em>
+                </li>
+
+                <li class="mb-3">
+                    <i class="fas fa-sync-alt me-2" style="color:#d35400;"></i>
+                    <strong>Diseñar un flujo de trabajo entre dos equipos físicos</strong> (disco SATA y NVMe) sincronizando configuración, memoria de Claude Code y proyectos a través de Gitea, con scripts propios de <code>push</code>/<code>pull</code> al abrir y cerrar sesión.
+                    <em class="text-muted">(Ingeniero DevOps)</em>
+                </li>
+
+                <li class="mb-3">
+                    <i class="fas fa-shield-alt me-2" style="color:#d35400;"></i>
+                    <strong>Endurecer la seguridad del VPS y del PC local</strong>: configurar <code>sudo NOPASSWD</code> con alcance limitado, llaves SSH dedicadas, certificados TLS automáticos vía Caddy y separación de credenciales por proyecto en archivos <code>.env</code>.
+                    <em class="text-muted">(Ingeniero en Seguridad / SysAdmin)</em>
+                </li>
+
+                <li class="mb-3">
+                    <i class="fas fa-cogs me-2" style="color:#d35400;"></i>
+                    <strong>Gestionar entornos Python aislados (<code>venv</code>) para cada proyecto</strong> cumpliendo PEP 668 de Debian, con dependencias específicas para Flask, Django, Web2py, OpenCV/dlib y MkDocs sin contaminar el sistema.
+                    <em class="text-muted">(Desarrollador Python senior)</em>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Sitios en producción -->
+        <div class="card card-custom p-4 mb-5">
+            <h2 class="section-title">Sitios en producción</h2>
+            <p class="text-muted mb-4">Todos alojados en mi propio VPS bajo el dominio <code>felixjimenez.cl</code>, con HTTPS automático y DNS self-hosted.</p>
+
+            <div class="d-flex flex-wrap gap-2">
+                <a href="https://felixjimenez.cl" target="_blank" rel="noopener" class="site-badge" title="Este sitio — Currículum + portafolio">
+                    <i class="fas fa-id-card"></i> felixjimenez.cl
+                </a>
+                <a href="https://fotos.felixjimenez.cl" target="_blank" rel="noopener" class="site-badge" title="Galería de fotos clasificadas por IA">
+                    <i class="fas fa-images"></i> fotos.felixjimenez.cl
+                </a>
+                <a href="https://manuales.felixjimenez.cl" target="_blank" rel="noopener" class="site-badge" title="Manuales y guías técnicas — MkDocs Material">
+                    <i class="fas fa-book"></i> manuales.felixjimenez.cl
+                </a>
+                <a href="https://git.felixjimenez.cl" target="_blank" rel="noopener" class="site-badge" title="Gitea propio — repositorios privados">
+                    <i class="fab fa-git-alt"></i> git.felixjimenez.cl
+                </a>
+            </div>
+        </div>
+
         <div class="row">
             <div class="col-lg-4">
                 
@@ -237,7 +470,11 @@
     </div>
 
     <footer class="text-center py-4 mt-5 text-muted">
-        <small>&copy; 2026 Felix Jimenez. Desarrollado con Django & Python.</small>
+        <small>
+            &copy; 2026 Felix Jimenez &nbsp;·&nbsp;
+            Desarrollado con Django, Python y <a href="https://claude.com/claude-code" target="_blank" rel="noopener" style="color:#d97757; text-decoration:none;"><i class="fas fa-robot"></i> Claude Code</a> &nbsp;·&nbsp;
+            Hospedado en VPS propio (Hetzner · Debian 13 · Caddy)
+        </small>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
