@@ -24,7 +24,19 @@ SECRET_KEY = os.environ['SECRET_KEY']
 
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = ['curriculum-66ml.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = [
+    'curriculum-66ml.onrender.com',
+    'felixjimenez.cl',
+    'www.felixjimenez.cl',
+    '178.105.43.223',
+    'localhost',
+    '127.0.0.1',
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://felixjimenez.cl',
+    'https://www.felixjimenez.cl',
+]
 
 
 # Application definition
@@ -145,10 +157,20 @@ cloudinary.config(
     api_secret=CLOUDINARY_STORAGE['API_SECRET'],
 )
 
-if DEBUG:
+# En VPS propio servimos media local (sin Cloudinary). En Render usamos Cloudinary.
+USE_LOCAL_MEDIA = os.getenv('USE_LOCAL_MEDIA', 'False') == 'True'
+
+if DEBUG or USE_LOCAL_MEDIA:
     MEDIA_URL = '/media/'
-    MEDIA_ROOT = BASE_DIR / 'media'
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+    MEDIA_ROOT = os.getenv('MEDIA_ROOT', str(BASE_DIR / 'media'))
+    STORAGES = {
+        "default": {
+            "BACKEND": "django.core.files.storage.FileSystemStorage",
+        },
+        "staticfiles": {
+            "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+        },
+    }
 else:
     STORAGES = {
         "default": {

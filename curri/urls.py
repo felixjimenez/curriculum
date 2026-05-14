@@ -8,6 +8,6 @@ urlpatterns = [
     path('', include('core.urls')),
 ]
 
-# Servir imágenes en modo desarrollo
-if settings.DEBUG:
+# Servir media localmente (dev o VPS con USE_LOCAL_MEDIA=True)
+if settings.DEBUG or getattr(settings, 'USE_LOCAL_MEDIA', False):
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

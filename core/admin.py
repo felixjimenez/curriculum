@@ -1,5 +1,6 @@
 from django.contrib import admin
-from.models import Experiencia, Educacion
+from .models import Experiencia, Educacion, Habilidad
+
 
 @admin.register(Experiencia)
 class ExperienciaAdmin(admin.ModelAdmin):
@@ -8,7 +9,26 @@ class ExperienciaAdmin(admin.ModelAdmin):
     search_fields = ('cargo', 'empresa', 'descripcion')
     date_hierarchy = 'fecha_inicio'
 
+
 @admin.register(Educacion)
 class EducacionAdmin(admin.ModelAdmin):
     list_display = ('titulo', 'institucion', 'ano_ingreso', 'ano_egreso', 'sitio_web')
     search_fields = ('titulo', 'institucion')
+
+
+@admin.register(Habilidad)
+class HabilidadAdmin(admin.ModelAdmin):
+    list_display = ('nombre', 'categoria', 'icono_clase', 'icono_color', 'orden', 'url_doc')
+    list_filter = ('categoria',)
+    list_editable = ('icono_clase', 'icono_color', 'orden')
+    search_fields = ('nombre',)
+    ordering = ('categoria', 'orden', 'nombre')
+    fieldsets = (
+        (None, {
+            'fields': ('nombre', 'categoria', 'url_doc', 'orden'),
+        }),
+        ('Header sistema solar', {
+            'description': 'Si <strong>icono_clase</strong> está vacío, la habilidad aparece solo en la sección Habilidades (sidebar) y no orbita en el header.',
+            'fields': ('icono_clase', 'icono_color'),
+        }),
+    )

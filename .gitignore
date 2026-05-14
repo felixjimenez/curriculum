@@ -5,3 +5,7 @@ db.sqlite3
 media/
 staticfiles/
 venv/
+
+# Notas locales con secrets — nunca commitear
+cloudinaryapisecret
+direccionurl

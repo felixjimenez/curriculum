@@ -1,6 +1,44 @@
 # core/models.py
 from django.db import models
 
+
+class Habilidad(models.Model):
+    CATEGORIAS = [
+        ('infraestructura', 'Infraestructura / DevOps'),
+        ('backend',         'Backend Python'),
+        ('base_datos',      'Bases de Datos'),
+        ('ia_vision',       'IA / Visión Computacional'),
+        ('web',             'Web Frontend'),
+        ('legado',          'Sistemas Legados'),
+    ]
+
+    nombre = models.CharField(max_length=80)
+    categoria = models.CharField(max_length=30, choices=CATEGORIAS)
+    url_doc = models.URLField(blank=True, help_text="Link a documentación oficial")
+    icono_clase = models.CharField(
+        max_length=120,
+        blank=True,
+        help_text='Clase CSS del icono que aparece en el header (sistema solar). '
+                  'Devicon: "devicon-python-plain colored". '
+                  'FontAwesome: "fas fa-shield-alt". '
+                  'Si queda vacío, la habilidad no aparece orbitando, solo en la sección de Habilidades.',
+    )
+    icono_color = models.CharField(
+        max_length=20,
+        blank=True,
+        help_text='Color hex opcional para overridear el color por defecto del icono. Ej: #44B78B',
+    )
+    orden = models.PositiveSmallIntegerField(default=0, help_text="Orden dentro de la categoría")
+
+    class Meta:
+        verbose_name = "Habilidad"
+        verbose_name_plural = "Habilidades"
+        ordering = ['categoria', 'orden', 'nombre']
+
+    def __str__(self):
+        return f"{self.nombre} ({self.get_categoria_display()})"
+
+
 # Modelo para Experiencia Laboral
 class Experiencia(models.Model):
     cargo = models.CharField(

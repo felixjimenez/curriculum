@@ -125,7 +125,8 @@
             line-height: 1;
             transform: rotate(var(--angle)) translateY(calc(var(--radius) * -1)) rotate(calc(var(--angle) * -1));
             transition: transform 0.4s ease, filter 0.3s ease;
-            cursor: default;
+            cursor: pointer;
+            text-decoration: none;
             filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
         }
        .orbit-icon:hover {
@@ -133,6 +134,7 @@
             filter: drop-shadow(0 4px 10px rgba(0,0,0,0.25));
             z-index: 3;
         }
+       .orbit-icon i { line-height: 1; }
 
         /* En tablets/mobile: reducir el radio y los íconos */
         @media (max-width: 700px) {
@@ -189,28 +191,26 @@
     <header class="header-section text-center">
         <div class="container">
 
-            <!-- Sistema solar: foto al centro, 18 logos orbitando -->
+            <!-- Sistema solar: foto al centro, habilidades orbitando (desde BD) -->
             <div class="solar-system">
                 <img src="{% static 'images/foto_felix.jpg' %}" alt="Felix Jimenez" class="profile-img rounded-circle">
 
-                <i class="devicon-python-plain colored orbit-icon" style="--angle: 0deg;" title="Python 3.13"></i>
-                <i class="devicon-django-plain colored orbit-icon" style="--angle: 20deg; color:#44B78B;" title="Django 5.2"></i>
-                <i class="devicon-flask-original orbit-icon" style="--angle: 40deg; color:#333;" title="Flask 3.x"></i>
-                <i class="devicon-debian-plain colored orbit-icon" style="--angle: 60deg;" title="Debian 13 (trixie)"></i>
-                <i class="devicon-linux-plain colored orbit-icon" style="--angle: 80deg; color:#333;" title="GNU/Linux"></i>
-                <i class="devicon-docker-plain colored orbit-icon" style="--angle: 100deg;" title="Docker"></i>
-                <i class="devicon-git-plain colored orbit-icon" style="--angle: 120deg;" title="Git / Gitea propio"></i>
-                <i class="devicon-opencv-plain colored orbit-icon" style="--angle: 140deg;" title="OpenCV — Haar Cascades + dlib"></i>
-                <i class="devicon-scikitlearn-plain colored orbit-icon" style="--angle: 160deg;" title="scikit-learn — DBSCAN"></i>
-                <i class="devicon-postgresql-plain colored orbit-icon" style="--angle: 180deg;" title="PostgreSQL"></i>
-                <i class="devicon-sqlite-plain colored orbit-icon" style="--angle: 200deg;" title="SQLite"></i>
-                <i class="devicon-bootstrap-plain colored orbit-icon" style="--angle: 220deg;" title="Bootstrap 5"></i>
-                <i class="devicon-bash-plain colored orbit-icon" style="--angle: 240deg; color:#4eaa25;" title="Bash / Shell scripting"></i>
-                <i class="devicon-vscode-plain colored orbit-icon" style="--angle: 260deg;" title="Visual Studio Code"></i>
-                <i class="fas fa-shield-alt orbit-icon" style="--angle: 280deg; color:#1f88c0;" title="Caddy — reverse proxy + HTTPS"></i>
-                <i class="fas fa-network-wired orbit-icon" style="--angle: 300deg; color:#2c3e50;" title="NSD — DNS autoritativo self-hosted"></i>
-                <i class="fas fa-book orbit-icon" style="--angle: 320deg; color:#526cfe;" title="MkDocs Material"></i>
-                <i class="fas fa-robot orbit-icon" style="--angle: 340deg; color:#d97757;" title="Claude Code"></i>
+                {% for h in habilidades_solar %}
+                    {% if h.url_doc %}
+                        <a href="{{ h.url_doc }}" target="_blank" rel="noopener"
+                           class="orbit-icon"
+                           style="--angle: {{ h.angulo }}deg;{% if h.icono_color %} color: {{ h.icono_color }};{% endif %}"
+                           title="{{ h.nombre }} — ver documentación oficial">
+                            <i class="{{ h.icono_clase }}"></i>
+                        </a>
+                    {% else %}
+                        <span class="orbit-icon"
+                              style="--angle: {{ h.angulo }}deg;{% if h.icono_color %} color: {{ h.icono_color }};{% endif %}"
+                              title="{{ h.nombre }}">
+                            <i class="{{ h.icono_clase }}"></i>
+                        </span>
+                    {% endif %}
+                {% endfor %}
             </div>
 
             <h1 class="display-4 fw-bold mb-1" style="color:#2d3436;">Felix Valois Jimenez Parada</h1>
@@ -355,21 +355,24 @@
 
                 <div class="card card-custom p-4 mb-4">
                     <h3 class="h5 mb-3 fw-bold section-title"> H A B I L I D A D E S </h3>
-                    <div>
-                        <a href="https://learn.microsoft.com/es-es/windows/" target="_blank" rel="noopener" class="badge bg-dark me-1 mb-1 text-decoration-none" title="Documentación oficial de Windows (Microsoft Learn)">Windows</a>
-                        <a href="https://www.debian.org/doc/" target="_blank" rel="noopener" class="badge bg-dark me-1 mb-1 text-decoration-none" title="Documentación oficial de Debian Linux">Linux</a>
-                        <a href="https://docs.python.org/es/3/" target="_blank" rel="noopener" class="badge bg-dark me-1 mb-1 text-decoration-none" title="Documentación oficial de Python (español)">Python</a>
-                        <a href="https://dev.mysql.com/doc/" target="_blank" rel="noopener" class="badge bg-dark me-1 mb-1 text-decoration-none" title="Documentación oficial de MySQL">MySQL</a>
-                        <a href="https://www.sqlite.org/docs.html" target="_blank" rel="noopener" class="badge bg-dark me-1 mb-1 text-decoration-none" title="Documentación oficial de SQLite">SQLite</a>
-                        <a href="https://developer.mozilla.org/es/docs/Web/HTML" target="_blank" rel="noopener" class="badge bg-dark me-1 mb-1 text-decoration-none" title="Documentación HTML en MDN">HTML5</a>
-                        <a href="https://flask.palletsprojects.com/en/stable/" target="_blank" rel="noopener" class="badge bg-dark me-1 mb-1 text-decoration-none" title="Documentación oficial de Flask">Flask</a>
-                        <a href="https://docs.djangoproject.com/es/5.2/" target="_blank" rel="noopener" class="badge bg-dark me-1 mb-1 text-decoration-none" title="Documentación oficial de Django (español)">Django</a>
-                        <a href="https://www.w3schools.com/sql/" target="_blank" rel="noopener" class="badge bg-dark me-1 mb-1 text-decoration-none" title="Tutorial y referencia de SQL en W3Schools">SQL</a>
-                        <a href="https://www.postgresql.org/docs/" target="_blank" rel="noopener" class="badge bg-dark me-1 mb-1 text-decoration-none" title="Documentación oficial de PostgreSQL">PostgreSQL</a>
-                        <a href="https://docs.opencv.org/4.x/" target="_blank" rel="noopener" class="badge bg-dark me-1 mb-1 text-decoration-none" title="Documentación oficial de OpenCV 4.x">OpenCV</a>
-                        <a href="https://git-scm.com/doc" target="_blank" rel="noopener" class="badge bg-dark me-1 mb-1 text-decoration-none" title="Documentación oficial de Git">Git</a>
-                        <a href="https://www.efset.org/es/" target="_blank" rel="noopener" class="badge bg-dark me-1 mb-1 text-decoration-none" title="EF SET — test gratuito de inglés, entrega certificado con nivel CEFR">Inglés intermedio</a>
-                    </div>
+                    {% for grupo in habilidades_por_categoria %}
+                        <div class="mb-3">
+                            <div class="text-muted small fw-bold mb-1">{{ grupo.label }}</div>
+                            <div>
+                                {% for h in grupo.items %}
+                                    {% if h.url_doc %}
+                                        <a href="{{ h.url_doc }}" target="_blank" rel="noopener"
+                                           class="badge bg-dark me-1 mb-1 text-decoration-none"
+                                           title="Documentación oficial de {{ h.nombre }}">{{ h.nombre }}</a>
+                                    {% else %}
+                                        <span class="badge bg-secondary me-1 mb-1" title="{{ h.nombre }}">{{ h.nombre }}</span>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% empty %}
+                        <p class="text-muted small mb-0">No hay habilidades registradas.</p>
+                    {% endfor %}
                 </div>
 
                 <h3 class="h5 mb-3 fw-bold section-title"> A C A D E M I A </h3>
