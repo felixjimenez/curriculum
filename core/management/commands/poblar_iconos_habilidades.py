@@ -19,7 +19,7 @@ from core.models import Habilidad
 # El campo "nombre" se usa como clave única para upsert.
 HABILIDADES_SOLAR = [
     # backend
-    ("Python 3",            "backend",         "devicon-python-plain colored", "",        "https://docs.python.org/es/3/"),
+    ("Python 3",            "backend",         "devicon-python-original colored", "",     "https://docs.python.org/es/3/"),
     ("Django 5",            "backend",         "devicon-django-plain colored", "#44B78B", "https://docs.djangoproject.com/es/5.2/"),
     ("Flask 3",             "backend",         "devicon-flask-original",       "#333333", "https://flask.palletsprojects.com/en/stable/"),
     # infraestructura
