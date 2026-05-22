@@ -9,108 +9,239 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/devicon.min.css">
     
+    <!-- Google Fonts Premium -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
     <style>
-        /* CSS Personalizado para Modernización */
+        /* CSS Personalizado Premium - Modern Tech & Glassmorphic */
         :root {
-            --primary-orange: #5b63b2; /* Un naranja más suave y moderno */
-            --dark-bg: #2d3436;
-            --text-color: #2d3436;
+            --primary-indigo: #4f46e5;
+            --primary-violet: #7c3aed;
+            --primary-grad: linear-gradient(135deg, var(--primary-indigo) 0%, var(--primary-violet) 100%);
+            --primary-light: #e0e7ff;
+            --accent-emerald: #10b981;
+            --bg-premium: radial-gradient(circle at 10% 20%, #f8fafc 0%, #f1f5f9 90%);
+            --text-dark: #0f172a;
+            --text-normal: #334155;
+            --text-muted: #64748b;
+            --card-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+            --card-hover-shadow: 0 20px 40px -15px rgba(79, 70, 229, 0.12), 0 1px 3px rgba(0, 0, 0, 0.02);
+            --border-light: rgba(226, 232, 240, 0.8);
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f5f6fa; /* Fondo gris muy claro para contraste */
-            color: var(--text-color);
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-premium);
+            color: var(--text-normal);
+            line-height: 1.6;
         }
 
-        /* Header con estilo — fondo claro, sistema solar */
-       .header-section {
-            background: linear-gradient(135deg, #fafbfc 0%, #eef1f5 100%);
-            padding: 3.5rem 0 3rem;
-            margin-bottom: 3rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Outfit', sans-serif;
+            color: var(--text-dark);
+        }
+
+        /* Header con estilo premium */
+        .header-section {
+            background: linear-gradient(180deg, #ffffff 0%, rgba(248, 250, 252, 0) 100%);
+            padding: 5rem 0 4rem;
+            margin-bottom: 2rem;
+            position: relative;
             overflow: hidden;
         }
 
-       .profile-img {
-            width: 180px;
-            height: 180px;
-            object-fit: cover;
-            border: 4px solid #ffffff;
-            box-shadow: 0 0 0 6px #fff3e0, 0 10px 28px rgba(211, 84, 0, 0.18);
+        .header-section::before {
+            content: '';
+            position: absolute;
+            top: -150px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(79, 70, 229, 0.08) 0%, rgba(255, 255, 255, 0) 70%);
+            z-index: 0;
+            pointer-events: none;
         }
 
-        /* Tarjetas de Experiencia */
-       .card-custom {
-            border: none;
-            border-radius: 12px;
+        /* Tarjeta Personalizada Premium */
+        .card-custom {
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
             background: white;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            margin-bottom: 20px;
+            box-shadow: var(--card-shadow);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            margin-bottom: 24px;
+            overflow: hidden;
+            position: relative;
         }
 
-       .card-custom:hover {
+        .card-custom:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            box-shadow: var(--card-hover-shadow);
+            border-color: rgba(79, 70, 229, 0.15);
         }
 
-       /* Borde destacado para cajas de Educación y Trabajos */
-       .card-highlight {
-            border-left: 4px solid #e67e22;
-        }
-
-       .section-title {
-            color: #e67e22;
-            font-weight: 700;
-            border-bottom: 2px solid #e67e22;
+        /* Títulos de secciones modernos */
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: var(--text-dark);
+            position: relative;
+            margin-bottom: 2rem;
+            padding-bottom: 0.75rem;
             display: inline-block;
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
         }
 
-       .logo-container img {
-            max-height: 80px;
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 4px;
+            background: var(--primary-grad);
+            border-radius: 99px;
+        }
+
+        /* Logos en gris a color en hover */
+        .company-logo {
+            max-height: 55px;
             max-width: 100%;
-            filter: grayscale(100%); /* Efecto elegante: logos en gris */
-            transition: filter 0.3s;
-            opacity: 0.8;
+            object-fit: contain;
+            filter: grayscale(100%);
+            opacity: 0.65;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-       .logo-container img:hover {
-            filter: grayscale(0%); /* Color al pasar el mouse */
+        .card-custom:hover .company-logo,
+        .timeline-card:hover .company-logo {
+            filter: grayscale(0%);
             opacity: 1;
         }
         
-        /* Datos de contacto */
-       .contact-info i {
-            width: 25px;
-            color: #d35400;
+        /* Datos de contacto con iconos */
+        .contact-info p {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            margin-bottom: 0.85rem;
+            font-size: 0.95rem;
+        }
+
+        .contact-info i {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: var(--primary-light);
+            color: var(--primary-indigo);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.95rem;
         }
 
         /* Subtítulo del header */
-       .role-subtitle {
-            color: #d35400;
+        .role-subtitle {
+            color: var(--primary-indigo);
+            font-weight: 600;
             letter-spacing: 0.5px;
-            font-weight: 500;
+            font-size: 1.25rem;
         }
 
-        /* Sistema solar: foto al centro, logos orbitando */
-       .solar-system {
+        /* Botones de Redes Sociales */
+        .social-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: white;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--border-light);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            text-decoration: none;
+            font-size: 1.2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .social-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px rgba(79, 70, 229, 0.12);
+            color: var(--primary-indigo);
+            border-color: rgba(79, 70, 229, 0.2);
+        }
+
+        /* Sistema Solar: órbitas interactivas animadas */
+        .solar-system {
             --radius: 220px;
             position: relative;
             width: calc(var(--radius) * 2 + 110px);
             height: calc(var(--radius) * 2 + 110px);
-            margin: 0 auto 1.5rem;
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
         }
-       .solar-system .profile-img {
+
+        .solar-system .profile-img {
+            width: 170px;
+            height: 170px;
+            object-fit: cover;
+            border: 6px solid #ffffff;
+            box-shadow: 0 10px 30px rgba(79, 70, 229, 0.22);
+            z-index: 5;
+            position: relative;
+            transition: transform 0.4s ease;
+        }
+
+        .solar-system .profile-img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Anillos Orbitales de fondo */
+        .orbital-ring {
             position: absolute;
+            border: 1px dashed rgba(79, 70, 229, 0.12);
+            border-radius: 50%;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            z-index: 2;
+            pointer-events: none;
+            z-index: 0;
         }
-       .orbit-icon {
+
+        .orbital-ring-1 {
+            width: calc(var(--radius) * 2);
+            height: calc(var(--radius) * 2);
+            animation: spin-clockwise 180s infinite linear;
+        }
+
+        .orbital-ring-2 {
+            width: calc(var(--radius) * 2 - 80px);
+            height: calc(var(--radius) * 2 - 80px);
+            border-style: dotted;
+            animation: spin-counter-clockwise 140s infinite linear;
+        }
+
+        @keyframes spin-clockwise {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        @keyframes spin-counter-clockwise {
+            from { transform: translate(-50%, -50%) rotate(360deg); }
+            to { transform: translate(-50%, -50%) rotate(0deg); }
+        }
+
+        /* Burbujas Orbitales de Habilidad */
+        .orbit-icon {
             --angle: 0deg;
             position: absolute;
             top: 50%;
@@ -121,68 +252,377 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
-            line-height: 1;
+            font-size: 2.2rem;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
             transform: rotate(var(--angle)) translateY(calc(var(--radius) * -1)) rotate(calc(var(--angle) * -1));
-            transition: transform 0.4s ease, filter 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             cursor: pointer;
             text-decoration: none;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+            z-index: 10;
         }
-       .orbit-icon:hover {
-            transform: rotate(var(--angle)) translateY(calc(var(--radius) * -1)) rotate(calc(var(--angle) * -1)) scale(1.35);
-            filter: drop-shadow(0 4px 10px rgba(0,0,0,0.25));
-            z-index: 3;
+
+        .orbit-icon:hover {
+            transform: rotate(var(--angle)) translateY(calc(var(--radius) * -1)) rotate(calc(var(--angle) * -1)) scale(1.3);
+            box-shadow: 0 10px 25px rgba(79, 70, 229, 0.2);
+            background: #ffffff;
+            border-color: rgba(79, 70, 229, 0.2);
+            z-index: 12;
         }
-       .orbit-icon i { line-height: 1; }
+
+        .orbit-icon i {
+            line-height: 1;
+            transition: transform 0.3s ease;
+        }
+
+        .orbit-icon:hover i {
+            transform: scale(1.1);
+        }
 
         /* En tablets/mobile: reducir el radio y los íconos */
-        @media (max-width: 700px) {
-           .solar-system {
-                --radius: 140px;
+        @media (max-width: 768px) {
+            .solar-system {
+                --radius: 125px;
+                width: calc(var(--radius) * 2 + 70px);
+                height: calc(var(--radius) * 2 + 70px);
             }
-           .solar-system .profile-img {
+            .solar-system .profile-img {
                 width: 110px;
                 height: 110px;
-                box-shadow: 0 0 0 4px #fff3e0, 0 6px 18px rgba(211, 84, 0, 0.18);
             }
-           .orbit-icon {
-                width: 38px;
-                height: 38px;
-                margin: -19px 0 0 -19px;
-                font-size: 1.9rem;
+            .orbital-ring-1 {
+                width: calc(var(--radius) * 2);
+                height: calc(var(--radius) * 2);
+            }
+            .orbital-ring-2 {
+                width: calc(var(--radius) * 2 - 50px);
+                height: calc(var(--radius) * 2 - 50px);
+            }
+            .orbit-icon {
+                width: 42px;
+                height: 42px;
+                margin: -21px 0 0 -21px;
+                font-size: 1.5rem;
+            }
+            .header-section {
+                padding: 3rem 0 2rem;
             }
         }
 
-        /* Badges de sitios en producción */
-       .site-badge {
+        /* Badges de sitios en producción con efecto pulso */
+        .site-badge {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            padding: 0.55rem 1rem;
-            background: #fff;
-            border: 1px solid #e5e1da;
+            gap: 0.75rem;
+            padding: 0.75rem 1.25rem;
+            background: white;
+            border: 1px solid var(--border-light);
             border-radius: 999px;
-            color: #2d3436;
+            color: var(--text-dark);
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             font-weight: 500;
-            transition: all 0.25s ease;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: var(--card-shadow);
+            position: relative;
+            overflow: hidden;
         }
-       .site-badge:hover {
-            background: #d35400;
+
+        .site-badge::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-grad);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+
+        .site-badge > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        .site-badge:hover {
             color: white;
-            border-color: #d35400;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(79, 70, 229, 0.2);
+            border-color: transparent;
+        }
+
+        .site-badge:hover::before {
+            opacity: 1;
+        }
+
+        .site-badge i {
+            color: var(--primary-indigo);
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        .site-badge:hover i {
+            color: white;
+        }
+
+        /* Pulse green dot (Activo) */
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent-emerald);
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+            animation: pulse-green 2s infinite;
+        }
+
+        @keyframes pulse-green {
+            0% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+            }
+            70% {
+                transform: scale(1);
+                box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
+            }
+            100% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+            }
+        }
+
+        /* Listas de logros premium */
+        .achievement-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.25rem;
+            padding: 1.15rem 0.5rem;
+            border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+            transition: all 0.3s ease;
+            border-radius: 12px;
+        }
+
+        .achievement-item:last-child {
+            border-bottom: none;
+        }
+
+        .achievement-item:hover {
+            background: rgba(79, 70, 229, 0.02);
+            padding-left: 1rem;
+            transform: translateX(4px);
+        }
+
+        .achievement-icon {
+            flex-shrink: 0;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: rgba(79, 70, 229, 0.05);
+            color: var(--primary-indigo);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            border: 1px solid rgba(79, 70, 229, 0.1);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .achievement-item:hover .achievement-icon {
+            background: var(--primary-grad);
+            color: white;
+            border-color: transparent;
+            box-shadow: 0 8px 16px rgba(79, 70, 229, 0.2);
+        }
+
+        .achievement-content {
+            font-size: 0.98rem;
+            color: var(--text-normal);
+        }
+
+        .achievement-content strong {
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        .achievement-role {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+            font-style: italic;
+            font-weight: 500;
+        }
+
+        /* Badges de habilidades en barra lateral */
+        .skill-group-title {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 700;
+            color: var(--text-muted);
+            margin-bottom: 0.6rem;
+            margin-top: 0.4rem;
+        }
+
+        .skill-badge {
+            display: inline-block;
+            padding: 0.35rem 0.75rem;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: #f1f5f9;
+            color: #475569;
+            border-radius: 8px;
+            margin-right: 0.25rem;
+            margin-bottom: 0.45rem;
+            transition: all 0.2s ease;
+            border: 1px solid rgba(226, 232, 240, 0.5);
+            text-decoration: none;
+        }
+
+        .skill-badge:hover {
+            background: var(--primary-indigo);
+            color: white !important;
             transform: translateY(-2px);
-            box-shadow: 0 6px 14px rgba(211, 84, 0, 0.25);
+            box-shadow: 0 4px 10px rgba(79, 70, 229, 0.15);
+            border-color: transparent;
         }
-       .site-badge i {
-            color: #d35400;
-            transition: color 0.25s ease;
+
+        /* Línea de tiempo vertical de Experiencia */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 2rem;
         }
-       .site-badge:hover i {
-            color: white;
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 10px;
+            bottom: 10px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary-indigo) 0%, rgba(79, 70, 229, 0.08) 100%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-marker {
+            position: absolute;
+            left: -2rem;
+            top: 10px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: white;
+            border: 3.5px solid var(--primary-indigo);
+            box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.15);
+            transition: all 0.3s ease;
+            z-index: 2;
+        }
+
+        .timeline-item:hover .timeline-marker {
+            background: var(--accent-emerald);
+            border-color: var(--accent-emerald);
+            box-shadow: 0 0 0 6px rgba(16, 185, 129, 0.2);
+            transform: scale(1.25);
+        }
+
+        .timeline-card {
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            padding: 1.75rem;
+            box-shadow: var(--card-shadow);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+        }
+
+        .timeline-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--card-hover-shadow);
+            border-color: rgba(79, 70, 229, 0.15);
+        }
+
+        .timeline-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--primary-grad);
+            border-top-left-radius: 16px;
+            border-bottom-left-radius: 16px;
+        }
+
+        @media (min-width: 576px) {
+            .border-start-sm {
+                border-left: 1px solid rgba(226, 232, 240, 0.8) !important;
+                padding-left: 1.5rem !important;
+            }
+        }
+
+        /* Co-branding de IA (Claude + Antigravity) en el Footer */
+        .ai-brand-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 0.4rem 0.85rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .claude-badge {
+            color: #d97706;
+        }
+
+        .claude-badge:hover {
+            background: #fef3c7;
+            color: #b45309;
+            border-color: #fde68a;
+            transform: translateY(-1px);
+        }
+
+        .antigravity-badge {
+            color: var(--primary-indigo);
+        }
+
+        .antigravity-badge:hover {
+            background: #e0e7ff;
+            color: #4338ca;
+            border-color: #c7d2fe;
+            transform: translateY(-1px);
+        }
+
+        .antigravity-icon {
+            width: 18px;
+            height: 18px;
+            vertical-align: middle;
+            animation: levitate-logo 2.5s infinite ease-in-out;
+        }
+
+        @keyframes levitate-logo {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-4px); }
         }
     </style>
 </head>
@@ -193,6 +633,10 @@
 
             <!-- Sistema solar: foto al centro, habilidades orbitando (desde BD) -->
             <div class="solar-system">
+                <!-- Anillos orbitales animados de fondo -->
+                <div class="orbital-ring orbital-ring-1"></div>
+                <div class="orbital-ring orbital-ring-2"></div>
+                
                 <img src="{% static 'images/foto_felix.jpg' %}" alt="Felix Jimenez" class="profile-img rounded-circle">
 
                 {% for h in habilidades_solar %}
@@ -213,16 +657,16 @@
                 {% endfor %}
             </div>
 
-            <h1 class="display-4 fw-bold mb-1" style="color:#2d3436;">Felix Valois Jimenez Parada</h1>
+            <h1 class="display-4 fw-bold mb-1" style="color: var(--text-dark); letter-spacing: -0.8px;">Felix Valois Jimenez Parada</h1>
             <p class="lead role-subtitle mb-2">Currículum · Portafolio · Logros recientes con IA</p>
-            <p class="small mb-0" style="color:#6c757d;">Rut: 27.983.512-3 &nbsp;·&nbsp; Ingeniero de Sistemas · Desarrollo y administración de sistemas de información</p>
+            <p class="small mb-0 text-muted">Rut: 27.983.512-3 &nbsp;·&nbsp; Ingeniero de Sistemas · Desarrollo y administración de sistemas de información</p>
 
-            <div class="d-flex justify-content-center gap-3 mt-3">
-                <a href="https://github.com/felixjimenez" class="fs-4" target="_blank" style="color:#24292f;"><i class="fab fa-github"></i></a>
-                <a href="https://twitter.com/felixjimenez09" class="fs-4" target="_blank" style="color:#1da1f2;"><i class="fab fa-twitter"></i></a>
-                <a href="https://web.facebook.com/fvjpsg?_rdc=1&_rdr" class="fs-4" target="_blank" style="color:#1877f2;"><i class="fab fa-facebook"></i></a>
-                <a href="https://www.linkedin.com/in/felix-valois-jimenez-parada-1a52aa28/" class="fs-4" target="_blank" style="color:#0a66c2;"><i class="fab fa-linkedin"></i></a>
-                <a href="https://www.instagram.com/felixjimenez1/" class="fs-4" target="_blank" style="color:#e4405f;"><i class="fab fa-instagram"></i></a>
+            <div class="d-flex justify-content-center gap-3 mt-4">
+                <a href="https://github.com/felixjimenez" class="social-btn" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://twitter.com/felixjimenez09" class="social-btn" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://web.facebook.com/fvjpsg?_rdc=1&_rdr" class="social-btn" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.linkedin.com/in/felix-valois-jimenez-parada-1a52aa28/" class="social-btn" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.instagram.com/felixjimenez1/" class="social-btn" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
             </div>
         </div>
     </header>
@@ -231,92 +675,144 @@
 
         <!-- Logros recientes con Claude Code -->
         <div class="card card-custom p-4 mb-5">
-            <h2 class="section-title">Logros recientes con Claude Code</h2>
+            <h2 class="section-title">Logros recientes con Claude Code & Antigravity</h2>
             <p class="text-muted mb-4">
-                Trabajos que he podido realizar en los últimos meses con la asistencia de <strong>Claude Code</strong> (IA aplicada al desarrollo de software y a la administración de sistemas). Entre paréntesis indico el perfil profesional que tradicionalmente desempeña cada una de estas labores.
+                Trabajos que he podido realizar en los últimos meses con la asistencia de <strong>Claude Code & Antigravity</strong> (IA aplicada al desarrollo de software y a la administración de sistemas). Entre paréntesis indico el perfil profesional que tradicionalmente desempeña cada una de estas labores.
             </p>
 
-            <p class="mb-3"><em>Con la ayuda de Claude Code he podido…</em></p>
+            <p class="mb-3 fw-semibold" style="color: var(--text-dark);">Con la ayuda de la IA he podido…</p>
 
-            <ul class="list-unstyled">
-                <li class="mb-3">
-                    <i class="fas fa-server me-2" style="color:#d35400;"></i>
-                    <strong>Levantar un VPS propio en Hetzner (Debian 13) desde cero</strong>, instalar y configurar Docker, Caddy como reverse-proxy con HTTPS automático, organizar <code>/srv/felix</code> para múltiples servicios y dejar el servidor listo para producción.
-                    <em class="text-muted">(Administrador de Sistemas Linux / Ingeniero DevOps)</em>
-                </li>
+            <div class="mt-2">
+                <div class="achievement-item">
+                    <div class="achievement-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <div class="achievement-content">
+                        <strong>Levantar un VPS propio en Hetzner (Debian 13) desde cero</strong>, instalar y configurar Docker, Caddy como reverse-proxy con HTTPS automático, organizar <code>/srv/felix</code> para múltiples servicios y dejar el servidor listo para producción.
+                        <span class="achievement-role">Administrador de Sistemas Linux / Ingeniero DevOps</span>
+                    </div>
+                </div>
 
-                <li class="mb-3">
-                    <i class="fas fa-network-wired me-2" style="color:#d35400;"></i>
-                    <strong>Migrar mi DNS a un esquema self-hosted con NSD como master y Buddyns como slave secundario</strong>, delegando los nameservers directamente desde NIC.cl y eliminando la dependencia de proveedores externos.
-                    <em class="text-muted">(Ingeniero de Redes / Administrador DNS)</em>
-                </li>
+                <div class="achievement-item">
+                    <div class="achievement-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <div class="achievement-content">
+                        <strong>Migrar mi DNS a un esquema self-hosted con NSD como master y Buddyns como slave secundario</strong>, delegando los nameservers directamente desde NIC.cl y eliminando la dependencia de proveedores externos.
+                        <span class="achievement-role">Ingeniero de Redes / Administrador DNS</span>
+                    </div>
+                </div>
 
-                <li class="mb-3">
-                    <i class="fas fa-globe me-2" style="color:#d35400;"></i>
-                    <strong>Registrar y administrar mi dominio <code>felixjimenez.cl</code></strong> directamente en NIC.cl, configurar los subdominios productivos (<code>fotos.</code>, <code>manuales.</code>, <code>git.</code>) y mantener la zona DNS bajo mi control.
-                    <em class="text-muted">(Administrador de Infraestructura)</em>
-                </li>
+                <div class="achievement-item">
+                    <div class="achievement-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <div class="achievement-content">
+                        <strong>Registrar y administrar mi dominio <code>felixjimenez.cl</code></strong> directamente en NIC.cl, configurar los subdominios productivos (<code>fotos.</code>, <code>manuales.</code>, <code>git.</code>) y mantener la zona DNS bajo mi control.
+                        <span class="achievement-role">Administrador de Infraestructura</span>
+                    </div>
+                </div>
 
-                <li class="mb-3">
-                    <i class="fab fa-python me-2" style="color:#d35400;"></i>
-                    <strong>Desplegar este sitio web personal en Django 5.2 en producción</strong>, con gestión de media y servicio bajo <code>felixjimenez.cl</code>.
-                    <em class="text-muted">(Desarrollador Backend Python / Django)</em>
-                </li>
+                <div class="achievement-item">
+                    <div class="achievement-icon">
+                        <i class="fab fa-python"></i>
+                    </div>
+                    <div class="achievement-content">
+                        <strong>Desplegar este sitio web personal en Django 5.2 en producción</strong>, con gestión de media y servicio bajo <code>felixjimenez.cl</code>.
+                        <span class="achievement-role">Desarrollador Backend Python / Django</span>
+                    </div>
+                </div>
 
-                <li class="mb-3">
-                    <i class="fas fa-flask me-2" style="color:#d35400;"></i>
-                    <strong>Poner en producción una aplicación Flask para Adderly Construcciones</strong>, con base de datos real, integración con Cloudinary para imágenes y panel de administración protegido.
-                    <em class="text-muted">(Desarrollador Full-Stack Python)</em>
-                </li>
+                <div class="achievement-item">
+                    <div class="achievement-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <div class="achievement-content">
+                        <strong>Poner en producción una aplicación Flask para Adderly Construcciones</strong>, con base de datos real, integración con Cloudinary para imágenes y panel de administración protegido.
+                        <span class="achievement-role">Desarrollador Full-Stack Python</span>
+                    </div>
+                </div>
 
-                <li class="mb-3">
-                    <i class="fas fa-brain me-2" style="color:#d35400;"></i>
-                    <strong>Construir un pipeline completo de Visión por Computadora aplicado a fotografía personal</strong> (~3.400 fotos): detección de rostros con OpenCV Haar Cascades, extracción y normalización de caras con dlib (<code>face_recognition</code>), agrupación por similitud con DBSCAN y Chinese Whispers, generación de mosaicos preview y renombrado automático por persona y fecha.
-                    <em class="text-muted">(Ingeniero de Visión por Computadora / Data Scientist en IA aplicada)</em>
-                </li>
+                <div class="achievement-item">
+                    <div class="achievement-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="achievement-content">
+                        <strong>Construir un pipeline completo de Visión por Computadora aplicado a fotografía personal</strong> (~3.400 fotos): detección de rostros con OpenCV Haar Cascades, extracción y normalización de caras con dlib (<code>face_recognition</code>), agrupación por similitud con DBSCAN y Chinese Whispers, generación de mosaicos preview y renombrado automático por persona y fecha.
+                        <span class="achievement-role">Ingeniero de Visión por Computadora / Data Scientist en IA aplicada</span>
+                    </div>
+                </div>
 
-                <li class="mb-3">
-                    <i class="fas fa-images me-2" style="color:#d35400;"></i>
-                    <strong>Desarrollar y desplegar una galería web privada</strong> (<code>fotos.felixjimenez.cl</code>) con autenticación de administrador, vista pública sin login y herramientas masivas para clasificar personas en categorías (familia, amigos, conocidos…).
-                    <em class="text-muted">(Desarrollador Full-Stack)</em>
-                </li>
+                <div class="achievement-item">
+                    <div class="achievement-icon">
+                        <i class="fas fa-images"></i>
+                    </div>
+                    <div class="achievement-content">
+                        <strong>Desarrollar y desplegar una galería web privada</strong> (<code>fotos.felixjimenez.cl</code>) con autenticación de administrador, vista pública sin login y herramientas masivas para clasificar personas en categorías (familia, amigos, conocidos…).
+                        <span class="achievement-role">Desarrollador Full-Stack</span>
+                    </div>
+                </div>
 
-                <li class="mb-3">
-                    <i class="fab fa-git-alt me-2" style="color:#d35400;"></i>
-                    <strong>Instalar y administrar mi propio Gitea</strong> (<code>git.felixjimenez.cl</code>) como reemplazo de GitHub para repositorios privados, sincronizando dos equipos físicos contra un único origen.
-                    <em class="text-muted">(Ingeniero DevOps / SRE)</em>
-                </li>
+                <div class="achievement-item">
+                    <div class="achievement-icon">
+                        <i class="fab fa-git-alt"></i>
+                    </div>
+                    <div class="achievement-content">
+                        <strong>Instalar y administrar mi propio Gitea</strong> (<code>git.felixjimenez.cl</code>) como reemplazo de GitHub para repositorios privados, sincronizando dos equipos físicos contra un único origen.
+                        <span class="achievement-role">Ingeniero DevOps / SRE</span>
+                    </div>
+                </div>
 
-                <li class="mb-3">
-                    <i class="fas fa-book me-2" style="color:#d35400;"></i>
-                    <strong>Publicar un sitio de documentación técnica</strong> (<code>manuales.felixjimenez.cl</code>) con MkDocs Material — 13 capítulos sobre Visión por Computadora, bitácora de aprendizaje y manuales en PDF — protegido con autenticación básica de Caddy.
-                    <em class="text-muted">(Technical Writer / Documentation Engineer)</em>
-                </li>
+                <div class="achievement-item">
+                    <div class="achievement-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div class="achievement-content">
+                        <strong>Publicar un sitio de documentación técnica</strong> (<code>manuales.felixjimenez.cl</code>) con MkDocs Material — 13 capítulos sobre Visión por Computadora, bitácora de aprendizaje y manuales en PDF — protegido con autenticación básica de Caddy.
+                        <span class="achievement-role">Technical Writer / Documentation Engineer</span>
+                    </div>
+                </div>
 
-                <li class="mb-3">
-                    <i class="fab fa-linux me-2" style="color:#d35400;"></i>
-                    <strong>Migrar mi PC principal de Debian 12 a Debian 13 (trixie)</strong> sobre disco NVMe, manteniendo Debian 12 en el disco SATA como red de seguridad, y resolver las trampas propias de Python 3.13 (PEP 668, <code>python3.13-venv</code>, <code>setuptools&lt;81</code>, <code>face_recognition_models</code> desde git).
-                    <em class="text-muted">(Administrador de Sistemas Linux)</em>
-                </li>
+                <div class="achievement-item">
+                    <div class="achievement-icon">
+                        <i class="fab fa-linux"></i>
+                    </div>
+                    <div class="achievement-content">
+                        <strong>Migrar mi PC principal de Debian 12 a Debian 13 (trixie)</strong> sobre disco NVMe, manteniendo Debian 12 en el disco SATA como red de seguridad, y resolver las trampas propias de Python 3.13 (PEP 668, <code>python3.13-venv</code>, <code>setuptools&lt;81</code>, <code>face_recognition_models</code> desde git).
+                        <span class="achievement-role">Administrador de Sistemas Linux</span>
+                    </div>
+                </div>
 
-                <li class="mb-3">
-                    <i class="fas fa-sync-alt me-2" style="color:#d35400;"></i>
-                    <strong>Diseñar un flujo de trabajo entre dos equipos físicos</strong> (disco SATA y NVMe) sincronizando configuración, memoria de Claude Code y proyectos a través de Gitea, con scripts propios de <code>push</code>/<code>pull</code> al abrir y cerrar sesión.
-                    <em class="text-muted">(Ingeniero DevOps)</em>
-                </li>
+                <div class="achievement-item">
+                    <div class="achievement-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <div class="achievement-content">
+                        <strong>Diseñar un flujo de trabajo entre dos equipos físicos</strong> (disco SATA y NVMe) sincronizando configuración, memoria de Claude Code y proyectos a través de Gitea, con scripts propios de <code>push</code>/<code>pull</code> al abrir y cerrar sesión.
+                        <span class="achievement-role">Ingeniero DevOps</span>
+                    </div>
+                </div>
 
-                <li class="mb-3">
-                    <i class="fas fa-shield-alt me-2" style="color:#d35400;"></i>
-                    <strong>Endurecer la seguridad del VPS y del PC local</strong>: configurar <code>sudo NOPASSWD</code> con alcance limitado, llaves SSH dedicadas, certificados TLS automáticos vía Caddy y separación de credenciales por proyecto en archivos <code>.env</code>.
-                    <em class="text-muted">(Ingeniero en Seguridad / SysAdmin)</em>
-                </li>
+                <div class="achievement-item">
+                    <div class="achievement-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="achievement-content">
+                        <strong>Endurecer la seguridad del VPS y del PC local</strong>: configurar <code>sudo NOPASSWD</code> con alcance limitado, llaves SSH dedicadas, certificados TLS automáticos vía Caddy y separación de credenciales por proyecto en archivos <code>.env</code>.
+                        <span class="achievement-role">Ingeniero en Seguridad / SysAdmin</span>
+                    </div>
+                </div>
 
-                <li class="mb-3">
-                    <i class="fas fa-cogs me-2" style="color:#d35400;"></i>
-                    <strong>Gestionar entornos Python aislados (<code>venv</code>) para cada proyecto</strong> cumpliendo PEP 668 de Debian, con dependencias específicas para Flask, Django, Web2py, OpenCV/dlib y MkDocs sin contaminar el sistema.
-                    <em class="text-muted">(Desarrollador Python senior)</em>
-                </li>
-            </ul>
+                <div class="achievement-item">
+                    <div class="achievement-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <div class="achievement-content">
+                        <strong>Gestionar entornos Python aislados (<code>venv</code>) para cada proyecto</strong> cumpliendo PEP 668 de Debian, con dependencias específicas para Flask, Django, Web2py, OpenCV/dlib y MkDocs sin contaminar el sistema.
+                        <span class="achievement-role">Desarrollador Python senior</span>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- Sitios en producción -->
@@ -324,21 +820,31 @@
             <h2 class="section-title">Sitios en producción</h2>
             <p class="text-muted mb-4">Todos alojados en mi propio VPS bajo el dominio <code>felixjimenez.cl</code>, con HTTPS automático y DNS self-hosted.</p>
 
-            <div class="d-flex flex-wrap gap-2">
+            <div class="d-flex flex-wrap gap-3">
                 <a href="https://felixjimenez.cl" target="_blank" rel="noopener" class="site-badge" title="Este sitio — Currículum + portafolio">
-                    <i class="fas fa-id-card"></i> felixjimenez.cl
+                    <span class="pulse-dot"></span>
+                    <i class="fas fa-id-card"></i>
+                    <span>felixjimenez.cl</span>
                 </a>
                 <a href="https://fotos.felixjimenez.cl" target="_blank" rel="noopener" class="site-badge" title="Galería de fotos clasificadas por IA">
-                    <i class="fas fa-images"></i> fotos.felixjimenez.cl
+                    <span class="pulse-dot"></span>
+                    <i class="fas fa-images"></i>
+                    <span>fotos.felixjimenez.cl</span>
                 </a>
                 <a href="https://manuales.felixjimenez.cl" target="_blank" rel="noopener" class="site-badge" title="Manuales y guías técnicas — MkDocs Material">
-                    <i class="fas fa-book"></i> manuales.felixjimenez.cl
+                    <span class="pulse-dot"></span>
+                    <i class="fas fa-book"></i>
+                    <span>manuales.felixjimenez.cl</span>
                 </a>
                 <a href="https://git.felixjimenez.cl" target="_blank" rel="noopener" class="site-badge" title="Gitea propio — repositorios privados">
-                    <i class="fab fa-git-alt"></i> git.felixjimenez.cl
+                    <span class="pulse-dot"></span>
+                    <i class="fab fa-git-alt"></i>
+                    <span>git.felixjimenez.cl</span>
                 </a>
                 <a href="https://adderlyconstrucciones.cl" target="_blank" rel="noopener" class="site-badge" title="Adderly Construcciones — Flask en producción">
-                    <i class="fas fa-hard-hat"></i> adderlyconstrucciones.cl
+                    <span class="pulse-dot"></span>
+                    <i class="fas fa-hard-hat"></i>
+                    <span>adderlyconstrucciones.cl</span>
                 </a>
             </div>
         </div>
@@ -346,28 +852,30 @@
         <div class="row">
             <div class="col-lg-4">
                 
+                <!-- Contacto -->
                 <div class="card card-custom p-4 mb-4">
-                    <h3 class="h5 mb-3 fw-bold">Contacto</h3>
-                    <div class="contact-info">
-                        <p class="mb-2"><i class="fas fa-phone"></i> +56 942 027 642</p>
-                        <p class="mb-2"><i class="fas fa-map-marker-alt"></i> Ñuñoa - Región Metropolitana - Chile</p>
-                        <p class="mb-0"><i class="fas fa-envelope"></i> fvjpsg@gmail.com</p>
+                    <h3 class="h5 mb-3 fw-bold section-title">Contacto</h3>
+                    <div class="contact-info mt-2">
+                        <p class="mb-2"><i class="fas fa-phone"></i> <span>+56 942 027 642</span></p>
+                        <p class="mb-2"><i class="fas fa-map-marker-alt"></i> <span>Ñuñoa - R. Metropolitana - Chile</span></p>
+                        <p class="mb-0"><i class="fas fa-envelope"></i> <span>fvjpsg@gmail.com</span></p>
                     </div>
                 </div>
 
+                <!-- Habilidades -->
                 <div class="card card-custom p-4 mb-4">
-                    <h3 class="h5 mb-3 fw-bold section-title"> H A B I L I D A D E S </h3>
+                    <h3 class="h5 mb-3 fw-bold section-title">Habilidades</h3>
                     {% for grupo in habilidades_por_categoria %}
                         <div class="mb-3">
-                            <div class="text-muted small fw-bold mb-1">{{ grupo.label }}</div>
-                            <div>
+                            <div class="skill-group-title">{{ grupo.label }}</div>
+                            <div class="d-flex flex-wrap">
                                 {% for h in grupo.items %}
                                     {% if h.url_doc %}
                                         <a href="{{ h.url_doc }}" target="_blank" rel="noopener"
-                                           class="badge bg-dark me-1 mb-1 text-decoration-none"
+                                           class="skill-badge"
                                            title="Documentación oficial de {{ h.nombre }}">{{ h.nombre }}</a>
                                     {% else %}
-                                        <span class="badge bg-secondary me-1 mb-1" title="{{ h.nombre }}">{{ h.nombre }}</span>
+                                        <span class="skill-badge" title="{{ h.nombre }}">{{ h.nombre }}</span>
                                     {% endif %}
                                 {% endfor %}
                             </div>
@@ -377,28 +885,29 @@
                     {% endfor %}
                 </div>
 
-                <h3 class="h5 mb-3 fw-bold section-title"> A C A D E M I A </h3>
+                <!-- Academia / Educación -->
+                <h3 class="h5 mb-3 fw-bold section-title">Academia</h3>
                 {% for edu in educacion %}
-                <div class="card card-custom card-highlight mb-3">
-                    <div class="card-body text-center">
+                <div class="card card-custom mb-3 p-3">
+                    <div class="text-center">
                         {% if edu.logo %}
-                            <div class="logo-container mb-3" style="height: 80px; display: flex; align-items: center; justify-content: center;">
+                            <div class="mb-3 d-flex align-items-center justify-content-center" style="height: 70px;">
                                 {% if edu.sitio_web %}
                                     <a href="{{ edu.sitio_web }}" target="_blank">
-                                        <img src="{{ edu.logo.url }}" alt="{{ edu.institucion }}" title="{{ edu.titulo }}">
+                                        <img src="{{ edu.logo.url }}" alt="{{ edu.institucion }}" class="company-logo" style="max-height: 60px;">
                                     </a>
                                 {% else %}
-                                    <img src="{{ edu.logo.url }}" alt="{{ edu.institucion }}" title="{{ edu.titulo }}">
+                                    <img src="{{ edu.logo.url }}" alt="{{ edu.institucion }}" class="company-logo" style="max-height: 60px;">
                                 {% endif %}
                             </div>
                         {% endif %}
-                        <h5 class="card-title fw-bold">{{ edu.titulo }}</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">{{ edu.institucion }}</h6>
-                    </div>
-                    <div class="card-footer bg-transparent border-0 text-muted small text-center">
-                        {% if edu.ano_ingreso or edu.ano_egreso %}
-                            {{ edu.ano_ingreso|default:"?" }} &ndash; {{ edu.ano_egreso|default:"Presente" }}
-                        {% endif %}
+                        <h5 class="h6 fw-bold mb-1" style="color: var(--text-dark);">{{ edu.titulo }}</h5>
+                        <div class="small text-muted mb-2">{{ edu.institucion }}</div>
+                        <div class="small text-muted fw-semibold">
+                            {% if edu.ano_ingreso or edu.ano_egreso %}
+                                {{ edu.ano_ingreso|default:"?" }} &ndash; {{ edu.ano_egreso|default:"Presente" }}
+                            {% endif %}
+                        </div>
                     </div>
                 </div>
                 {% endfor %}
@@ -406,80 +915,115 @@
 
             <div class="col-lg-8">
                 
+                <!-- Experiencia en Chile -->
                 <h2 class="section-title">Experiencia en Chile</h2>
-                <div class="row mb-4">
+                <div class="timeline mb-5">
                     {% for exp in experiencias_cl %}
-                    <div class="col-md-6">
-                        <div class="card card-custom card-highlight h-100">
-                            <div class="card-body text-center">
-                                {% if exp.logo %}
-                                    <div class="logo-container mb-3" style="height: 80px; display: flex; align-items: center; justify-content: center;">
-                                        {% if exp.sitio_web %}
-                                            <a href="{{ exp.sitio_web }}" target="_blank">
-                                                <img src="{{ exp.logo.url }}" alt="{{ exp.empresa }}">
-                                            </a>
-                                        {% else %}
-                                            <img src="{{ exp.logo.url }}" alt="{{ exp.empresa }}">
-                                        {% endif %}
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-card">
+                            <div class="row align-items-center">
+                                <div class="col-sm-3 text-center mb-3 mb-sm-0">
+                                    {% if exp.logo %}
+                                        <div class="d-flex align-items-center justify-content-center" style="height: 60px;">
+                                            {% if exp.sitio_web %}
+                                                <a href="{{ exp.sitio_web }}" target="_blank">
+                                                    <img src="{{ exp.logo.url }}" alt="{{ exp.empresa }}" class="company-logo">
+                                                </a>
+                                            {% else %}
+                                                <img src="{{ exp.logo.url }}" alt="{{ exp.empresa }}" class="company-logo">
+                                            {% endif %}
+                                        </div>
+                                    {% endif %}
+                                    <div class="small text-muted mt-2 fw-semibold">
+                                        {{ exp.fecha_inicio|date:"Y" }} -
+                                        {% if exp.es_trabajo_actual %}Presente{% else %}{{ exp.fecha_fin|date:"Y" }}{% endif %}
                                     </div>
-                                {% endif %}
-                                <h5 class="card-title fw-bold">{{ exp.cargo }}</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">{{ exp.empresa }}</h6>
-                                <p class="card-text small">{{ exp.descripcion|truncatewords:20 }}</p>
-                            </div>
-                            <div class="card-footer bg-transparent border-0 text-muted small text-center">
-                                {{ exp.fecha_inicio|date:"Y" }} -
-                                {% if exp.es_trabajo_actual %}Presente{% else %}{{ exp.fecha_fin|date:"Y" }}{% endif %}
+                                </div>
+                                <div class="col-sm-9 border-start-sm">
+                                    <h5 class="h6 fw-bold mb-1" style="color: var(--text-dark);">{{ exp.cargo }}</h5>
+                                    <h6 class="small text-muted mb-2 fw-semibold">{{ exp.empresa }}</h6>
+                                    <p class="card-text small mb-0 text-secondary" style="text-align: justify;">{{ exp.descripcion }}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                     {% empty %}
-                        <p class="text-muted">No hay experiencias registradas en Chile aún.</p>
+                        <p class="text-muted ps-3">No hay experiencias registradas en Chile aún.</p>
                     {% endfor %}
                 </div>
 
+                <!-- Experiencia en Venezuela -->
                 <h2 class="section-title">Experiencia en Venezuela</h2>
-                <div class="row">
-                   {% for exp in experiencias_ve %}
-                    <div class="col-md-6">
-                        <div class="card card-custom card-highlight h-100">
-                            <div class="card-body text-center">
-                                {% if exp.logo %}
-                                    <div class="logo-container mb-3" style="height: 80px; display: flex; align-items: center; justify-content: center;">
-                                        {% if exp.sitio_web %}
-                                            <a href="{{ exp.sitio_web }}" target="_blank">
-                                                <img src="{{ exp.logo.url }}" alt="{{ exp.empresa }}">
-                                            </a>
-                                        {% else %}
-                                            <img src="{{ exp.logo.url }}" alt="{{ exp.empresa }}">
-                                        {% endif %}
+                <div class="timeline">
+                    {% for exp in experiencias_ve %}
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-card">
+                            <div class="row align-items-center">
+                                <div class="col-sm-3 text-center mb-3 mb-sm-0">
+                                    {% if exp.logo %}
+                                        <div class="d-flex align-items-center justify-content-center" style="height: 60px;">
+                                            {% if exp.sitio_web %}
+                                                <a href="{{ exp.sitio_web }}" target="_blank">
+                                                    <img src="{{ exp.logo.url }}" alt="{{ exp.empresa }}" class="company-logo">
+                                                </a>
+                                            {% else %}
+                                                <img src="{{ exp.logo.url }}" alt="{{ exp.empresa }}" class="company-logo">
+                                            {% endif %}
+                                        </div>
+                                    {% endif %}
+                                    <div class="small text-muted mt-2 fw-semibold">
+                                        {{ exp.fecha_inicio|date:"Y" }} -
+                                        {% if exp.es_trabajo_actual %}Presente{% else %}{{ exp.fecha_fin|date:"Y" }}{% endif %}
                                     </div>
-                                {% endif %}
-                                <h5 class="card-title fw-bold">{{ exp.cargo }}</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">{{ exp.empresa }}</h6>
-                                <p class="card-text small">{{ exp.descripcion|truncatewords:40 }}</p>
-                            </div>
-                            <div class="card-footer bg-transparent border-0 text-muted small text-center">
-                                {{ exp.fecha_inicio|date:"Y" }} -
-                                {% if exp.es_trabajo_actual %}Presente{% else %}{{ exp.fecha_fin|date:"Y" }}{% endif %}
+                                </div>
+                                <div class="col-sm-9 border-start-sm">
+                                    <h5 class="h6 fw-bold mb-1" style="color: var(--text-dark);">{{ exp.cargo }}</h5>
+                                    <h6 class="small text-muted mb-2 fw-semibold">{{ exp.empresa }}</h6>
+                                    <p class="card-text small mb-0 text-secondary" style="text-align: justify;">{{ exp.descripcion }}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                     {% empty %}
-                        <p class="text-muted">No hay experiencias registradas en Venezuela aún.</p>
+                        <p class="text-muted ps-3">No hay experiencias registradas en Venezuela aún.</p>
                     {% endfor %}
-                   </div>
+                </div>
 
             </div>
         </div>
     </div>
 
-    <footer class="text-center py-4 mt-5 text-muted">
-        <small>
-            &copy; 2026 Felix Jimenez &nbsp;·&nbsp;
-            Desarrollado con Django, Python y <a href="https://claude.com/claude-code" target="_blank" rel="noopener" style="color:#d97757; text-decoration:none;"><i class="fas fa-robot"></i> Claude Code</a> &nbsp;·&nbsp;
-            Hospedado en VPS propio (Hetzner · Debian 13 · Caddy)
-        </small>
+    <!-- Footer Premium con Co-branding de IA -->
+    <footer class="text-center py-5 mt-5 text-muted border-top" style="border-color: rgba(226,232,240,0.6) !important;">
+        <div class="container">
+            <div class="mb-3 d-flex justify-content-center align-items-center gap-2 flex-wrap" style="font-size: 0.95rem;">
+                <span class="fw-medium">Desarrollado con Django, Python e Inteligencia Artificial mediante</span>
+                <a href="https://claude.com/claude-code" target="_blank" rel="noopener" class="ai-brand-badge claude-badge">
+                    <i class="fas fa-robot"></i> Claude Code
+                </a>
+                <span class="fw-medium">y</span>
+                <a href="https://github.com/google-deepmind" target="_blank" rel="noopener" class="ai-brand-badge antigravity-badge" title="Desarrollado con Antigravity de Google DeepMind">
+                    <!-- Icono Vectorial SVG Animado de Antigravity (Simula Levitación) -->
+                    <svg class="antigravity-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M50 15L15 75H85L50 15Z" stroke="url(#antigravity-grad)" stroke-width="10" stroke-linejoin="round"/>
+                        <circle cx="50" cy="48" r="10" fill="url(#antigravity-grad)"/>
+                        <defs>
+                            <linearGradient id="antigravity-grad" x1="0" y1="0" x2="100" y2="100">
+                                <stop offset="0%" stop-color="#4f46e5" />
+                                <stop offset="100%" stop-color="#06b6d4" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    <span>Antigravity</span>
+                </a>
+            </div>
+            <small class="d-block mt-3 text-secondary">
+                &copy; 2026 Felix Jimenez &nbsp;·&nbsp;
+                Hospedado en VPS propio (Hetzner · Debian 13 · Caddy)
+            </small>
+        </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
