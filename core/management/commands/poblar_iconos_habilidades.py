@@ -42,6 +42,7 @@ HABILIDADES_SOLAR = [
     ("MkDocs Material",     "web",             "fas fa-book",                  "#526cfe", "https://squidfunk.github.io/mkdocs-material/"),
     ("Claude Code",         "ia_vision",       "fas fa-robot",                 "#d97757", "https://claude.com/claude-code"),
     ("Bash",                "infraestructura", "devicon-bash-plain colored",   "#4eaa25", "https://www.gnu.org/software/bash/manual/"),
+    ("Antigravity",         "ia_vision",       "antigravity-logo",             "#4f46e5", "https://github.com/google-deepmind"),
 ]
 
 

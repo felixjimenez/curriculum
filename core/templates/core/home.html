@@ -620,14 +620,14 @@
             animation: levitate-logo 2.5s infinite ease-in-out;
         }
 
-        .orbit-icon img {
+        .orbit-icon img, .orbit-icon svg {
             width: 32px;
             height: 32px;
             object-fit: contain;
             transition: transform 0.3s ease;
         }
 
-        .orbit-icon:hover img {
+        .orbit-icon:hover img, .orbit-icon:hover svg {
             transform: scale(1.1);
         }
 
@@ -656,21 +656,13 @@
                            class="orbit-icon"
                            style="--angle: {{ h.angulo }}deg;{% if h.icono_color %} color: {{ h.icono_color }};{% endif %}"
                            title="{{ h.nombre }} — ver documentación oficial">
-                            {% if "Python" in h.nombre or "python" in h.nombre %}
-                                <img src="{% static 'images/python.png' %}" alt="Python">
-                            {% else %}
-                                <i class="{{ h.icono_clase }}"></i>
-                            {% endif %}
+                            {% include "core/habilidad_svg.html" with nombre=h.nombre color=h.icono_color %}
                         </a>
                     {% else %}
                         <span class="orbit-icon"
                               style="--angle: {{ h.angulo }}deg;{% if h.icono_color %} color: {{ h.icono_color }};{% endif %}"
                               title="{{ h.nombre }}">
-                            {% if "Python" in h.nombre or "python" in h.nombre %}
-                                <img src="{% static 'images/python.png' %}" alt="Python">
-                            {% else %}
-                                <i class="{{ h.icono_clase }}"></i>
-                            {% endif %}
+                            {% include "core/habilidad_svg.html" with nombre=h.nombre color=h.icono_color %}
                         </span>
                     {% endif %}
                 {% endfor %}
