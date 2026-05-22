@@ -620,6 +620,17 @@
             animation: levitate-logo 2.5s infinite ease-in-out;
         }
 
+        .orbit-icon img {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .orbit-icon:hover img {
+            transform: scale(1.1);
+        }
+
         @keyframes levitate-logo {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-4px); }
@@ -645,13 +656,21 @@
                            class="orbit-icon"
                            style="--angle: {{ h.angulo }}deg;{% if h.icono_color %} color: {{ h.icono_color }};{% endif %}"
                            title="{{ h.nombre }} — ver documentación oficial">
-                            <i class="{{ h.icono_clase }}"></i>
+                            {% if "Python" in h.nombre or "python" in h.nombre %}
+                                <img src="{% static 'images/python.png' %}" alt="Python">
+                            {% else %}
+                                <i class="{{ h.icono_clase }}"></i>
+                            {% endif %}
                         </a>
                     {% else %}
                         <span class="orbit-icon"
                               style="--angle: {{ h.angulo }}deg;{% if h.icono_color %} color: {{ h.icono_color }};{% endif %}"
                               title="{{ h.nombre }}">
-                            <i class="{{ h.icono_clase }}"></i>
+                            {% if "Python" in h.nombre or "python" in h.nombre %}
+                                <img src="{% static 'images/python.png' %}" alt="Python">
+                            {% else %}
+                                <i class="{{ h.icono_clase }}"></i>
+                            {% endif %}
                         </span>
                     {% endif %}
                 {% endfor %}
@@ -1005,17 +1024,7 @@
                 </a>
                 <span class="fw-medium">y</span>
                 <a href="https://github.com/google-deepmind" target="_blank" rel="noopener" class="ai-brand-badge antigravity-badge" title="Desarrollado con Antigravity de Google DeepMind">
-                    <!-- Icono Vectorial SVG Animado de Antigravity (Simula Levitación) -->
-                    <svg class="antigravity-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M50 15L15 75H85L50 15Z" stroke="url(#antigravity-grad)" stroke-width="10" stroke-linejoin="round"/>
-                        <circle cx="50" cy="48" r="10" fill="url(#antigravity-grad)"/>
-                        <defs>
-                            <linearGradient id="antigravity-grad" x1="0" y1="0" x2="100" y2="100">
-                                <stop offset="0%" stop-color="#4f46e5" />
-                                <stop offset="100%" stop-color="#06b6d4" />
-                            </linearGradient>
-                        </defs>
-                    </svg>
+                    <img src="{% static 'images/antigravity.jpeg' %}" class="antigravity-icon" alt="Antigravity Logo" style="border-radius: 4px; object-fit: cover;">
                     <span>Antigravity</span>
                 </a>
             </div>
