@@ -67,7 +67,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'core.middleware.VisitCounterMiddleware',
 ]
+
+# Token para ver /admin/visitas/ sin ser staff (uso del administrador).
+VISITAS_TOKEN = os.getenv('VISITAS_TOKEN', '')
 
 ROOT_URLCONF = 'curri.urls'
 

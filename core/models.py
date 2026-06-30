@@ -121,3 +121,19 @@ class Educacion(models.Model):
 
     def __str__(self):
         return f"{self.titulo} - {self.institucion}"
+
+
+class Visita(models.Model):
+    """Contador de visitas: una fila por cada visita a una página (uso del admin)."""
+    ruta = models.CharField(max_length=255, blank=True)
+    ts = models.DateTimeField(auto_now_add=True, db_index=True)
+    ip = models.CharField(max_length=45, blank=True)
+    user_agent = models.CharField(max_length=300, blank=True)
+
+    class Meta:
+        verbose_name = "Visita"
+        verbose_name_plural = "Visitas"
+        ordering = ['-id']
+
+    def __str__(self):
+        return f"{self.ts:%Y-%m-%d %H:%M} {self.ruta}"
