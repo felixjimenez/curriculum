@@ -1,0 +1,255 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Félix Jiménez · Portafolio</title>
+    <meta name="description" content="Portafolio de Félix Jiménez: aplicaciones web, cursos de inglés y administración de sistemas, tienda en línea, organización de fotos con IA y desarrollo a medida.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-indigo: #4f46e5;
+            --primary-violet: #7c3aed;
+            --primary-grad: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            --text-dark: #0f172a;
+            --text-normal: #334155;
+            --text-muted: #64748b;
+            --bg: radial-gradient(circle at 15% 15%, #f8fafc 0%, #eef2ff 60%, #f1f5f9 100%);
+            --card-shadow: 0 10px 30px -12px rgba(15, 23, 42, 0.12), 0 2px 6px rgba(15, 23, 42, 0.04);
+            --card-hover-shadow: 0 28px 50px -18px rgba(79, 70, 229, 0.30), 0 4px 10px rgba(15, 23, 42, 0.05);
+            --border-light: rgba(226, 232, 240, 0.9);
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            background-attachment: fixed;
+            color: var(--text-normal);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Outfit', sans-serif;
+            color: var(--text-dark);
+            margin: 0;
+        }
+
+        .wrap { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
+
+        /* ---------- Encabezado ---------- */
+        header {
+            text-align: center;
+            padding: 4.5rem 0 2.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            top: -160px; left: 50%;
+            transform: translateX(-50%);
+            width: 680px; height: 340px;
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.12) 0%, rgba(255,255,255,0) 70%);
+            z-index: 0; pointer-events: none;
+        }
+        .eyebrow {
+            display: inline-block;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            color: var(--primary-violet);
+            background: rgba(124, 58, 237, 0.08);
+            padding: 6px 16px;
+            border-radius: 99px;
+            margin-bottom: 1.2rem;
+            position: relative; z-index: 1;
+        }
+        header h1 {
+            font-size: clamp(2.2rem, 5vw, 3.4rem);
+            font-weight: 900;
+            letter-spacing: -1.2px;
+            position: relative; z-index: 1;
+        }
+        header h1 .grad {
+            background: var(--primary-grad);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        header p.lead {
+            max-width: 640px;
+            margin: 1.1rem auto 0;
+            font-size: 1.12rem;
+            color: var(--text-muted);
+            position: relative; z-index: 1;
+        }
+
+        /* ---------- Grilla de tarjetas ---------- */
+        main { padding-bottom: 4rem; }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 26px;
+            margin-top: 1.5rem;
+        }
+
+        .card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(8px);
+            border: 1px solid var(--border-light);
+            border-radius: 20px;
+            padding: 30px 28px 26px;
+            box-shadow: var(--card-shadow);
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.35s cubic-bezier(0.16,1,0.3,1),
+                        box-shadow 0.35s cubic-bezier(0.16,1,0.3,1),
+                        border-color 0.35s;
+            overflow: hidden;
+        }
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: var(--acento, var(--primary-indigo));
+            opacity: 0.9;
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--card-hover-shadow);
+            border-color: color-mix(in srgb, var(--acento, var(--primary-indigo)) 35%, transparent);
+        }
+
+        .badge {
+            position: absolute;
+            top: 20px; right: 20px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: var(--acento, var(--primary-indigo));
+            background: color-mix(in srgb, var(--acento, var(--primary-indigo)) 12%, white);
+            padding: 5px 11px;
+            border-radius: 99px;
+        }
+
+        .icono {
+            width: 62px; height: 62px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 32px;
+            border-radius: 16px;
+            background: color-mix(in srgb, var(--acento, var(--primary-indigo)) 12%, white);
+            margin-bottom: 18px;
+        }
+
+        .card h2 {
+            font-size: 1.4rem;
+            font-weight: 800;
+            letter-spacing: -0.4px;
+            margin-bottom: 10px;
+        }
+        .card p.desc {
+            font-size: 0.97rem;
+            color: var(--text-normal);
+            margin: 0 0 16px;
+            flex-grow: 1;
+        }
+        .oferta {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: #b45309;
+            background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+            border: 1px solid #fde68a;
+            border-radius: 12px;
+            padding: 9px 12px;
+            margin-bottom: 16px;
+        }
+        .cta {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--acento, var(--primary-indigo));
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .cta .arrow { transition: transform 0.3s cubic-bezier(0.16,1,0.3,1); }
+        .card:hover .cta .arrow { transform: translateX(5px); }
+
+        /* ---------- Pie ---------- */
+        footer {
+            text-align: center;
+            padding: 2.5rem 0 3rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border-light);
+        }
+        footer a { color: var(--primary-violet); text-decoration: none; font-weight: 600; }
+        footer a:hover { text-decoration: underline; }
+
+        @media (max-width: 480px) {
+            header { padding: 3rem 0 1.5rem; }
+            .card { padding: 26px 22px 22px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="wrap">
+            <span class="eyebrow">Portafolio</span>
+            <h1>Félix <span class="grad">Jiménez</span></h1>
+            <p class="lead">
+                Más de 30 años construyendo soluciones informáticas. Aquí están mis
+                aplicaciones y cursos en vivo — entra a cada uno y descúbrelo por ti mismo.
+            </p>
+        </div>
+    </header>
+
+    <main>
+        <div class="wrap">
+            <div class="grid">
+                {% for p in proyectos %}
+                <a class="card"
+                   href="{{ p.url }}"
+                   {% if p.externo %}target="_blank" rel="noopener"{% endif %}
+                   style="{% if p.acento %}--acento: {{ p.acento }};{% endif %}">
+                    {% if p.badge %}<span class="badge">{{ p.badge }}</span>{% endif %}
+                    <div class="icono">{{ p.emoji }}</div>
+                    <h2>{{ p.titulo }}</h2>
+                    <p class="desc">{{ p.descripcion }}</p>
+                    {% if p.oferta %}<div class="oferta">{{ p.oferta }}</div>{% endif %}
+                    <span class="cta">Explorar <span class="arrow">→</span></span>
+                </a>
+                {% empty %}
+                <p>Aún no hay proyectos publicados.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="wrap">
+            Hecho por Félix Jiménez ·
+            <a href="/curriculum">Ver mi currículum</a> ·
+            <a href="mailto:fvjpsg@gmail.com">Contáctame</a>
+        </div>
+    </footer>
+</body>
+</html>

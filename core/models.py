@@ -2,6 +2,66 @@
 from django.db import models
 
 
+class Proyecto(models.Model):
+    """Cada tarjeta de la portada (portafolio). Se administra desde /admin:
+    subir un proyecto nuevo = agregar una fila aquí, sin tocar código."""
+    titulo = models.CharField(max_length=120, verbose_name="Título")
+    descripcion = models.TextField(
+        verbose_name="Descripción",
+        help_text="Texto breve que invite a la persona a entrar y averiguar.",
+    )
+    url = models.CharField(
+        max_length=300,
+        verbose_name="Enlace",
+        help_text='A dónde lleva la tarjeta. Externo: "https://ingles.felixjimenez.cl". '
+                  'Interno: "/curriculum". Correo: "mailto:fvjpsg@gmail.com".',
+    )
+    emoji = models.CharField(
+        max_length=8,
+        default="🚀",
+        help_text="Ícono grande de la tarjeta. Un emoji: 🇬🇧 🖥️ 🛒 📜 🖼️ 🌐",
+    )
+    oferta = models.CharField(
+        max_length=160,
+        blank=True,
+        verbose_name="Oferta / destacado",
+        help_text='Franja resaltada opcional. Ej: "🎉 Inauguración: 5 lecciones por $3.000 · la 1ª gratis".',
+    )
+    badge = models.CharField(
+        max_length=30,
+        blank=True,
+        verbose_name="Etiqueta",
+        help_text='Etiqueta corta en la esquina. Ej: "En vivo", "Nuevo", "Próximamente".',
+    )
+    acento = models.CharField(
+        max_length=20,
+        blank=True,
+        verbose_name="Color de acento",
+        help_text="Color hex opcional para el ícono y el botón. Ej: #10b981. Vacío = índigo por defecto.",
+    )
+    externo = models.BooleanField(
+        default=True,
+        verbose_name="Abrir en pestaña nueva",
+        help_text="Marcado para enlaces externos (otro subdominio o sitio). Desmarcado para páginas internas como /curriculum.",
+    )
+    publicado = models.BooleanField(
+        default=True,
+        help_text="Desmárcalo para ocultar la tarjeta sin borrarla.",
+    )
+    orden = models.PositiveSmallIntegerField(
+        default=100,
+        help_text="Menor número aparece primero.",
+    )
+
+    class Meta:
+        verbose_name = "Proyecto (portada)"
+        verbose_name_plural = "Proyectos (portada)"
+        ordering = ['orden', 'titulo']
+
+    def __str__(self):
+        return self.titulo
+
+
 class Habilidad(models.Model):
     CATEGORIAS = [
         ('infraestructura', 'Infraestructura / DevOps'),

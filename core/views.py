@@ -5,10 +5,16 @@ from django.http import Http404, HttpResponse
 from django.shortcuts import render
 from django.utils import timezone
 from datetime import timedelta
-from .models import Experiencia, Educacion, Habilidad, Visita
+from .models import Experiencia, Educacion, Habilidad, Visita, Proyecto
 
 
 def home(request):
+    """Portada / portafolio: grilla de tarjetas leída de la tabla Proyecto."""
+    proyectos = Proyecto.objects.filter(publicado=True)
+    return render(request, 'core/portada.html', {'proyectos': proyectos})
+
+
+def curriculum(request):
     experiencias_cl = Experiencia.objects.filter(pais='CL')
     experiencias_ve = Experiencia.objects.filter(pais='VE')
     educacion = Educacion.objects.all()

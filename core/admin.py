@@ -1,5 +1,25 @@
 from django.contrib import admin
-from .models import Experiencia, Educacion, Habilidad
+from .models import Experiencia, Educacion, Habilidad, Proyecto
+
+
+@admin.register(Proyecto)
+class ProyectoAdmin(admin.ModelAdmin):
+    list_display = ('titulo', 'orden', 'publicado', 'badge', 'url')
+    list_editable = ('orden', 'publicado', 'badge')
+    list_filter = ('publicado',)
+    search_fields = ('titulo', 'descripcion')
+    ordering = ('orden', 'titulo')
+    fieldsets = (
+        (None, {
+            'fields': ('titulo', 'descripcion', 'url', 'externo'),
+        }),
+        ('Apariencia', {
+            'fields': ('emoji', 'acento', 'oferta', 'badge'),
+        }),
+        ('Publicación', {
+            'fields': ('publicado', 'orden'),
+        }),
+    )
 
 
 @admin.register(Experiencia)
