@@ -39,19 +39,29 @@ pip install -r requirements.txt
 
 ## Architecture
 
-Standard Django project with a single app (`core`) serving a one-page portfolio site.
+Django project with a single app (`core`). Two public pages:
+- `/` → **portada** (portfolio landing = grid of project cards). See `docs/PORTADA.md`.
+- `/curriculum` → **currículum** (the CV with the "solar system" header).
 
-**Project layout:** `curri/` is the Django project root (contains `manage.py`). Inside it, `curri/` is the settings package and `core/` is the sole app.
+**Project layout:** `curri/` is the settings package, `core/` is the sole app, `manage.py` at repo root.
 
 **Data models** (`core/models.py`):
-- `Experiencia` — work experience entries with fields for title, company, logo (ImageField), dates, `pais` (`'CL'` or `'VE'`), and a current-job flag. Ordered by most recent first.
-- `Educacion` — education entries with institution, degree title, logo (ImageField), and graduation date. Ordered by most recent first.
+- `Proyecto` — one row = one card on the portada. Fields: `titulo, descripcion, url, emoji, oferta, badge, acento, externo, publicado, orden`. **This is what makes the portada data-driven: adding a portfolio link = adding a row in `/admin`, no code change.**
+- `Habilidad` — skills; those with `icono_clase` orbit in the CV's solar-system header.
+- `Experiencia` — work experience, filtered by `pais` (`'CL'`/`'VE'`).
+- `Educacion` — education entries.
+- `Visita` — visit counter (see README).
 
-**Single view** (`core/views.py`): The `home()` view queries experiences filtered by country (Chile and Venezuela separately) plus all education records, and renders them to `core/templates/core/home.html`.
+**Views** (`core/views.py`):
+- `home()` → renders `core/templates/core/portada.html` with `Proyecto.objects.filter(publicado=True)`.
+- `curriculum()` → the CV: experiences by country + education + skills → `core/templates/core/home.html`.
+- `admin_visitas()` → visit panel (staff or `?token=VISITAS_TOKEN`).
 
-**Template** (`core/templates/core/home.html`): Bootstrap 5.3 + Font Awesome 6. Displays a profile header, sidebar with education logos, and experience cards grouped by country.
+**Templates:** `portada.html` (self-contained, Inter/Outfit, indigo/violet, responsive card grid) and `home.html` (Bootstrap 5.3 + Font Awesome 6, solar-system CV).
 
-**Admin** (`core/admin.py`): `ExperienciaAdmin` (filterable by country and current status, searchable by title/company) and `EducacionAdmin` are registered for content management.
+**Admin** (`core/admin.py`): `ProyectoAdmin` (list-editable `orden/publicado/badge`), `HabilidadAdmin`, `ExperienciaAdmin`, `EducacionAdmin`.
+
+**Seed:** the 6 initial cards live in data migration `0011_seed_proyectos` (idempotent `get_or_create`).
 
 ---
 
