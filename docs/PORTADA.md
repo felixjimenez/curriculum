@@ -139,7 +139,7 @@ cd /srv/felix/curriculum
 cp data/db.sqlite3 data/db.sqlite3.bak-$(date +%Y%m%d)   # respaldar BD persistente
 git pull origin main
 docker build -t curriculum . && docker stop curriculum && docker rm curriculum
-docker run -d --name curriculum --restart unless-stopped -p 8001:8000 \
+docker run -d --name curriculum --restart unless-stopped -p 127.0.0.1:8001:8000 \
   -v /srv/felix/curriculum/data:/var/data \
   -e DATABASE_URL='sqlite:////var/data/db.sqlite3' -e DEBUG='False' \
   -e SECRET_KEY='<ver .env>' -e VISITAS_TOKEN='<ver contenedor>' \
@@ -150,3 +150,6 @@ docker exec curriculum python manage.py migrate
 > La base de datos vive en el **volumen** `/srv/felix/curriculum/data` (sobrevive a los
 > rebuilds). Por eso las tarjetas que agregues desde el admin **no se pierden** cuando
 > se despliega código nuevo.
+
+> Seguridad: `127.0.0.1` es obligatorio porque Caddy es la única entrada web pública.
+> No cambiar el mapeo a `8001:8000`, pues expondría Gunicorn directamente por la IP.
